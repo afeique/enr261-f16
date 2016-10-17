@@ -1,0 +1,253 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Tutorial_02_2</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-14"><meta name="DC.source" content="Tutorial_02_2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Tutorial_02_2</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program description:</span>
+<span class="comment">% Purpose of this program is to demonstrate how vectors can be created</span>
+<span class="comment">% and modified</span>
+
+<span class="comment">% clear command window and all variables</span>
+clc <span class="comment">% clears contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the workspace</span>
+format <span class="string">compact</span> <span class="comment">% removes blank spaces in the output</span>
+               <span class="comment">% remove the word 'compact' to restore default spacing</span>
+
+<span class="comment">% output title and author to command window</span>
+fprintf(<span class="string">'Output for Tutorial_02_2 written by Afeique Sheikh.\n\n'</span>)
+
+<span class="comment">% vectors can be created using a list of values inside square brackets []</span>
+RowVectorA = [1 2 3 4] <span class="comment">% row vector with 4 elements</span>
+ColumnVectorA = [2; 4; 6; 8] <span class="comment">% semicolon creates a new row</span>
+
+fprintf(<span class="string">'\n'</span>) <span class="comment">% insert blank line</span>
+<span class="comment">% transpose operator ' (apostrophe) converts row vector to column vector</span>
+<span class="comment">% and vice versa</span>
+ColumnVectorB = [10 20 30 40]'
+
+RowVectorB = ColumnVectorB'
+fprintf(<span class="string">'\n'</span>) <span class="comment">% insert blank line</span>
+
+<span class="comment">% vectors can be created from other vectors and constants</span>
+RowVectorC = [RowVectorA RowVectorB 0 0]
+
+<span class="comment">% a vector can be created using the colon operator</span>
+RowVectorD = 0:10:100 <span class="comment">% creates vector with 0 as the first element, 100 as</span>
+                      <span class="comment">% the last element, in increments of 10</span>
+RowVectorE = -10:0 <span class="comment">% if increment is omitted, defaults to 1</span>
+fprintf(<span class="string">'\n'</span>) <span class="comment">% blank line</span>
+
+<span class="comment">% the subscript (parentheses) operator can be used to access individual</span>
+<span class="comment">% elements in a vector</span>
+fprintf(<span class="string">'RowVectorE(2) = %g\n\n'</span>, RowVectorE(2))
+
+<span class="comment">% individual elements can be modified</span>
+fprintf(<span class="string">'After RowVectorE(2) = 0\n'</span>, RowVectorE(2))
+RowVectorE(2) = 0 <span class="comment">% replaces 2nd element with 0</span>
+
+<span class="comment">% ranges of elements can be modified simultaneously</span>
+fprintf(<span class="string">'\nAfter RowVectorE(5:7) = 1\n'</span>)
+RowVectorE(5:7) = 1
+
+<span class="comment">% similarly, ranges of elements can be deleted / made empty</span>
+fprintf(<span class="string">'\nAfter RowVectorE(5:7) = []\n'</span>)
+RowVectorE(5:7) = []
+
+fprintf(<span class="string">'\nAfter RowVectorE(10) = 5\n'</span>)
+RowVectorE(10) = 5 <span class="comment">% creates a new 10th element and fills it with 5; fills</span>
+                   <span class="comment">% the new 9th element with 0</span>
+
+fprintf(<span class="string">'\nAfter RowVectorE([1 5 10]) = []\n'</span>)
+RowVectorE([1 5 10]) = [] <span class="comment">% deletes the 1st, 5th, and 10th elements</span>
+
+<span class="comment">% linspace is used to fill vectors when the starting value, ending value,</span>
+<span class="comment">% and number of values are known</span>
+fprintf(<span class="string">'\n'</span>)
+RowVectorF = linspace(0, 100, 5) <span class="comment">% start at 0, end at 100, fill with 5</span>
+                                 <span class="comment">% equally (linearly) spaced values</span>
+</pre><pre class="codeoutput">Output for Tutorial_02_2 written by Afeique Sheikh.
+
+RowVectorA =
+     1     2     3     4
+ColumnVectorA =
+     2
+     4
+     6
+     8
+
+ColumnVectorB =
+    10
+    20
+    30
+    40
+RowVectorB =
+    10    20    30    40
+
+RowVectorC =
+     1     2     3     4    10    20    30    40     0     0
+RowVectorD =
+     0    10    20    30    40    50    60    70    80    90   100
+RowVectorE =
+   -10    -9    -8    -7    -6    -5    -4    -3    -2    -1     0
+
+RowVectorE(2) = -9
+
+After RowVectorE(2) = 0
+RowVectorE =
+   -10     0    -8    -7    -6    -5    -4    -3    -2    -1     0
+
+After RowVectorE(5:7) = 1
+RowVectorE =
+   -10     0    -8    -7     1     1     1    -3    -2    -1     0
+
+After RowVectorE(5:7) = []
+RowVectorE =
+   -10     0    -8    -7    -3    -2    -1     0
+
+After RowVectorE(10) = 5
+RowVectorE =
+   -10     0    -8    -7    -3    -2    -1     0     0     5
+
+After RowVectorE([1 5 10]) = []
+RowVectorE =
+     0    -8    -7    -2    -1     0     0
+
+RowVectorF =
+     0    25    50    75   100
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Tutorial_02_2
+% Author:   Afeique Sheikh
+
+% Program description:
+% Purpose of this program is to demonstrate how vectors can be created
+% and modified
+
+% clear command window and all variables
+clc % clears contents of the command window
+clear % clears all defined variables from the workspace
+format compact % removes blank spaces in the output
+               % remove the word 'compact' to restore default spacing
+
+% output title and author to command window
+fprintf('Output for Tutorial_02_2 written by Afeique Sheikh.\n\n')
+
+% vectors can be created using a list of values inside square brackets []
+RowVectorA = [1 2 3 4] % row vector with 4 elements
+ColumnVectorA = [2; 4; 6; 8] % semicolon creates a new row
+
+fprintf('\n') % insert blank line
+% transpose operator ' (apostrophe) converts row vector to column vector
+% and vice versa
+ColumnVectorB = [10 20 30 40]' 
+
+RowVectorB = ColumnVectorB'
+fprintf('\n') % insert blank line
+
+% vectors can be created from other vectors and constants
+RowVectorC = [RowVectorA RowVectorB 0 0]
+
+% a vector can be created using the colon operator
+RowVectorD = 0:10:100 % creates vector with 0 as the first element, 100 as
+                      % the last element, in increments of 10
+RowVectorE = -10:0 % if increment is omitted, defaults to 1
+fprintf('\n') % blank line
+
+% the subscript (parentheses) operator can be used to access individual
+% elements in a vector
+fprintf('RowVectorE(2) = %g\n\n', RowVectorE(2))
+
+% individual elements can be modified
+fprintf('After RowVectorE(2) = 0\n', RowVectorE(2))
+RowVectorE(2) = 0 % replaces 2nd element with 0
+
+% ranges of elements can be modified simultaneously
+fprintf('\nAfter RowVectorE(5:7) = 1\n')
+RowVectorE(5:7) = 1
+
+% similarly, ranges of elements can be deleted / made empty
+fprintf('\nAfter RowVectorE(5:7) = []\n')
+RowVectorE(5:7) = []
+
+fprintf('\nAfter RowVectorE(10) = 5\n')
+RowVectorE(10) = 5 % creates a new 10th element and fills it with 5; fills
+                   % the new 9th element with 0
+
+fprintf('\nAfter RowVectorE([1 5 10]) = []\n')
+RowVectorE([1 5 10]) = [] % deletes the 1st, 5th, and 10th elements
+
+% linspace is used to fill vectors when the starting value, ending value,
+% and number of values are known
+fprintf('\n')
+RowVectorF = linspace(0, 100, 5) % start at 0, end at 100, fill with 5
+                                 % equally (linearly) spaced values
+
+
+##### SOURCE END #####
+--></body></html>

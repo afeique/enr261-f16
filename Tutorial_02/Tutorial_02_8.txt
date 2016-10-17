@@ -1,0 +1,116 @@
+Output for Tutorial_02_8 written by Afeique Sheikh.
+
+Enter a numerical grade (>= 60 is passing): 50
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+end
+
+
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+else
+	fprintf('Your grade is failing.\n')
+end
+
+Your grade is failing.
+Enter the resistance value in Ohms: 80
+
+The resistance is not within 100 (+/-) 10
+
+
+Output for Tutorial_02_8 written by Afeique Sheikh.
+
+Enter a numerical grade (>= 60 is passing): 50
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+end
+
+
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+else
+	fprintf('Your grade is failing.\n')
+end
+
+Your grade is failing.
+
+Enter the resistance value in Ohms: 80
+
+The resistance is not within 100 (+/-) 10
+
+
+Output for Tutorial_02_8 written by Afeique Sheikh.
+
+Enter a numerical grade (>= 60 is passing): 60
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+end
+
+Your grade is passing.
+
+
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+else
+	fprintf('Your grade is failing.\n')
+end
+
+Your grade is passing.
+
+Enter the resistance value in Ohms: 110
+
+The resistance is within 100 (+/-) 10
+
+
+Output for Tutorial_02_8 written by Afeique Sheikh.
+
+Enter a numerical grade (>= 60 is passing): 70
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+end
+
+Your grade is passing.
+
+
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+else
+	fprintf('Your grade is failing.\n')
+end
+
+Your grade is passing.
+
+Enter the resistance value in Ohms: 111
+
+The resistance is not within 100 (+/-) 10
+Output for Tutorial_02_8 written by Afeique Sheikh.
+
+Enter a numerical grade (>= 60 is passing): 50
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+end
+
+
+
+if (grade >= 60)
+	fprintf('Your grade is passing.\n')
+else
+	fprintf('Your grade is failing.\n')
+end
+
+Your grade is failing.
+
+Enter the resistance value in Ohms: 80
+
+The resistance is not within 100 (+/-) 10
+
+

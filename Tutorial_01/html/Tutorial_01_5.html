@@ -1,0 +1,272 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Tutorial_01_5</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-14"><meta name="DC.source" content="Tutorial_01_5.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Tutorial_01_5</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program Description:</span>
+<span class="comment">% The purpose of this program is to demonstrate how to create multiple</span>
+<span class="comment">% 3D plots.</span>
+
+<span class="comment">% Clear the command window and all variables</span>
+clc <span class="comment">% clear contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the Matlab workspace</span>
+close <span class="string">all</span> <span class="comment">% closes all figure windows</span>
+format <span class="string">compact</span>  <span class="comment">% removes blank lines after variable output</span>
+
+<span class="comment">% Output the title and author to the command window.</span>
+fprintf(<span class="string">'Output for Tutorial_01_5 written by Afeique Sheikh.\n\n'</span>)
+
+<span class="comment">% Define x and y vectors</span>
+fprintf(<span class="string">'The vectors define the range of x and y values\n'</span>)
+xVector = [-4:1:0]
+yVector = [0:1:2]
+
+<span class="comment">% Create the x,y mesh for creating a surface plot</span>
+fprintf(<span class="string">'\nThe x,y values define the x,y coordinates\n'</span>)
+[x,y] = meshgrid(xVector, yVector)
+
+<span class="comment">% Compute the z values for each (x,y) coordinate</span>
+fprintf(<span class="string">'\nz = x + y evaluated at each (x,y) coordinate\n'</span>)
+z = x+y
+
+<span class="comment">% creating a finer mesh for making a surface plot</span>
+<span class="comment">% output is suppressed using a semicolon</span>
+xVector = [-3:.2:3];
+yVector = xVector;
+[x,y] = meshgrid(xVector, yVector);
+z = 1.8 .^ (-1.5 * sqrt(x.^2 + y.^2)) .* cos(.5*y).*sin(x);
+
+<span class="comment">% Create a surface plot and add title and axis labels</span>
+surf(x, y, z)
+grid <span class="string">on</span> <span class="comment">% adds grilines to the graph</span>
+xlabel(<span class="string">'X'</span>) <span class="comment">% Adds an X axis label</span>
+ylabel(<span class="string">'Y'</span>) <span class="comment">% Adds a Y axis label</span>
+zlabel(<span class="string">'Z'</span>) <span class="comment">% Adds a Z axis label</span>
+title(<span class="string">'Surface Plot'</span>) <span class="comment">% Adds a title</span>
+
+figure <span class="comment">% open a new figure window</span>
+
+<span class="comment">% Create a 3D contour plot and add title and axis labels</span>
+contour3(x, y, z, 20) <span class="comment">% 20 is the number of contour lines</span>
+
+grid <span class="string">on</span> <span class="comment">% adds gridlines</span>
+xlabel(<span class="string">'X'</span>) <span class="comment">% Adds an X axis label</span>
+ylabel(<span class="string">'Y'</span>) <span class="comment">% Adds a Y axis label</span>
+zlabel(<span class="string">'Z'</span>) <span class="comment">% Adds a Z axis label</span>
+title(<span class="string">'3D Contour Plot'</span>) <span class="comment">% Adds a title</span>
+
+figure <span class="comment">% open a new figure window</span>
+
+<span class="comment">% Create a 2D contour plot and add title and axis labels</span>
+contour(x, y, z, 20) <span class="comment">% 20 is the number of contour lines</span>
+
+grid <span class="string">on</span> <span class="comment">% adds gridlines</span>
+xlabel(<span class="string">'X'</span>) <span class="comment">% Adds an X axis label</span>
+ylabel(<span class="string">'Y'</span>) <span class="comment">% Adds a Y axis label</span>
+zlabel(<span class="string">'Z'</span>) <span class="comment">% Adds a Z axis label</span>
+title(<span class="string">'2D Contour Plot'</span>) <span class="comment">% Adds a title</span>
+
+figure <span class="comment">% open a new figure window</span>
+
+<span class="comment">% Create a 3D stem plot with title and axis labels</span>
+clear <span class="comment">% clear all variables</span>
+t = [0:.2:10] <span class="comment">% time variable</span>
+x=t; y=sin(t); z=t.^1.5; <span class="comment">% define the x,y,z points to plot</span>
+
+stem3(x,y,z,<span class="string">'fill'</span>) <span class="comment">% fill adds a solid fill to the data points</span>
+
+grid <span class="string">on</span> <span class="comment">% adds gridlines</span>
+xlabel(<span class="string">'X'</span>) <span class="comment">% Adds an X axis label</span>
+ylabel(<span class="string">'Y'</span>) <span class="comment">% Adds a Y axis label</span>
+zlabel(<span class="string">'Z'</span>) <span class="comment">% Adds a Z axis label</span>
+title(<span class="string">'Stem Plot'</span>) <span class="comment">% Adds a title</span>
+</pre><pre class="codeoutput">Output for Tutorial_01_5 written by Afeique Sheikh.
+
+The vectors define the range of x and y values
+xVector =
+    -4    -3    -2    -1     0
+yVector =
+     0     1     2
+
+The x,y values define the x,y coordinates
+x =
+    -4    -3    -2    -1     0
+    -4    -3    -2    -1     0
+    -4    -3    -2    -1     0
+y =
+     0     0     0     0     0
+     1     1     1     1     1
+     2     2     2     2     2
+
+z = x + y evaluated at each (x,y) coordinate
+z =
+    -4    -3    -2    -1     0
+    -3    -2    -1     0     1
+    -2    -1     0     1     2
+t =
+  Columns 1 through 7
+         0    0.2000    0.4000    0.6000    0.8000    1.0000    1.2000
+  Columns 8 through 14
+    1.4000    1.6000    1.8000    2.0000    2.2000    2.4000    2.6000
+  Columns 15 through 21
+    2.8000    3.0000    3.2000    3.4000    3.6000    3.8000    4.0000
+  Columns 22 through 28
+    4.2000    4.4000    4.6000    4.8000    5.0000    5.2000    5.4000
+  Columns 29 through 35
+    5.6000    5.8000    6.0000    6.2000    6.4000    6.6000    6.8000
+  Columns 36 through 42
+    7.0000    7.2000    7.4000    7.6000    7.8000    8.0000    8.2000
+  Columns 43 through 49
+    8.4000    8.6000    8.8000    9.0000    9.2000    9.4000    9.6000
+  Columns 50 through 51
+    9.8000   10.0000
+</pre><img vspace="5" hspace="5" src="Tutorial_01_5_01.png" alt=""> <img vspace="5" hspace="5" src="Tutorial_01_5_02.png" alt=""> <img vspace="5" hspace="5" src="Tutorial_01_5_03.png" alt=""> <img vspace="5" hspace="5" src="Tutorial_01_5_04.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Tutorial_01_5
+% Author:   Afeique Sheikh
+
+% Program Description:
+% The purpose of this program is to demonstrate how to create multiple
+% 3D plots.
+
+% Clear the command window and all variables
+clc % clear contents of the command window
+clear % clears all defined variables from the Matlab workspace
+close all % closes all figure windows
+format compact  % removes blank lines after variable output
+
+% Output the title and author to the command window.
+fprintf('Output for Tutorial_01_5 written by Afeique Sheikh.\n\n')
+
+% Define x and y vectors
+fprintf('The vectors define the range of x and y values\n')
+xVector = [-4:1:0]
+yVector = [0:1:2]
+
+% Create the x,y mesh for creating a surface plot
+fprintf('\nThe x,y values define the x,y coordinates\n')
+[x,y] = meshgrid(xVector, yVector)
+
+% Compute the z values for each (x,y) coordinate
+fprintf('\nz = x + y evaluated at each (x,y) coordinate\n')
+z = x+y
+
+% creating a finer mesh for making a surface plot
+% output is suppressed using a semicolon
+xVector = [-3:.2:3];
+yVector = xVector;
+[x,y] = meshgrid(xVector, yVector);
+z = 1.8 .^ (-1.5 * sqrt(x.^2 + y.^2)) .* cos(.5*y).*sin(x);
+
+% Create a surface plot and add title and axis labels
+surf(x, y, z)
+grid on % adds grilines to the graph
+xlabel('X') % Adds an X axis label
+ylabel('Y') % Adds a Y axis label
+zlabel('Z') % Adds a Z axis label
+title('Surface Plot') % Adds a title
+
+figure % open a new figure window
+
+% Create a 3D contour plot and add title and axis labels
+contour3(x, y, z, 20) % 20 is the number of contour lines
+
+grid on % adds gridlines
+xlabel('X') % Adds an X axis label
+ylabel('Y') % Adds a Y axis label
+zlabel('Z') % Adds a Z axis label
+title('3D Contour Plot') % Adds a title
+
+figure % open a new figure window
+
+% Create a 2D contour plot and add title and axis labels
+contour(x, y, z, 20) % 20 is the number of contour lines
+
+grid on % adds gridlines
+xlabel('X') % Adds an X axis label
+ylabel('Y') % Adds a Y axis label
+zlabel('Z') % Adds a Z axis label
+title('2D Contour Plot') % Adds a title
+
+figure % open a new figure window
+
+% Create a 3D stem plot with title and axis labels
+clear % clear all variables
+t = [0:.2:10] % time variable
+x=t; y=sin(t); z=t.^1.5; % define the x,y,z points to plot
+
+stem3(x,y,z,'fill') % fill adds a solid fill to the data points
+
+grid on % adds gridlines
+xlabel('X') % Adds an X axis label
+ylabel('Y') % Adds a Y axis label
+zlabel('Z') % Adds a Z axis label
+title('Stem Plot') % Adds a title
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Tutorial_02_3</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-14"><meta name="DC.source" content="Tutorial_02_3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Tutorial_02_3</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program description:</span>
+<span class="comment">% Purpose of this program is to demonstrate basic matrix operations,</span>
+<span class="comment">% creation of tabular results, plotting, and the use of the diary command</span>
+<span class="comment">% to write the contents of the command window to a file.</span>
+
+<span class="comment">% clear command window and all variables</span>
+clc <span class="comment">% clears contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the workspace</span>
+format <span class="string">compact</span> <span class="comment">% removes blank spaces in the output</span>
+               <span class="comment">% remove the word 'compact' to restore default spacing</span>
+
+<span class="comment">% the diary command appends all output sent to the command window to the</span>
+<span class="comment">% file Tutorial_02_3_Output.txt</span>
+<span class="comment">% "append" means it will add onto the file without emptying it:</span>
+<span class="comment">% the file's previous contents will be preserved.</span>
+diary <span class="string">DavidWest</span>
+
+<span class="comment">% output title and author to command window</span>
+fprintf(<span class="string">'Output for Tutorial_02_3 written by Afeique Sheikh.\n\n'</span>)
+fprintf(<span class="string">'Output is also sent to a file: "Tutorial_02_3_Output.txt"\n'</span>)
+
+<span class="comment">% a matrix is a mathematical table of values containing rows and columns</span>
+<span class="comment">% matrices also have mathematical operations and strict mathematical</span>
+<span class="comment">% properties defining their behaviour</span>
+MatrixA = [1 2 3 4; 5 6 7 8; 9 10 11 12]
+
+<span class="comment">% individual matrix elements can be accessed using parentheses (row, col)</span>
+fprintf(<span class="string">'MatrixA(2,3) = %i\n\n'</span>, MatrixA(2,3))
+<span class="comment">% elements of an entire row can be output using the colon operator</span>
+fprintf(<span class="string">'Third row of MatrixA = %i %i %i %i\n\n'</span>, MatrixA(3,:))
+<span class="comment">% elements of an entire column can also be output using the colon operator</span>
+fprintf(<span class="string">'Second column of MatrixA = \n\n%i \n%i \n%i\n\n'</span>, MatrixA(:,2))
+
+<span class="comment">% specialized matrices can be created with the ones, zeros, and eye</span>
+<span class="comment">% functions</span>
+MatrixB = ones(2,3) <span class="comment">% matrix with 2 rows, 3 columns filled with ones</span>
+MatrixC = ones(4) <span class="comment">% matrix with 4 rows, 4 columns filled with ones</span>
+MatrixD = zeros(3,2) <span class="comment">% matrix with 3 rows, 2 columns filled with zeros</span>
+IdentityMatrixE = eye(3) <span class="comment">% creates a 3x3 identity matrix</span>
+                         <span class="comment">% by definition, identity matrices are square</span>
+MatrixE = [1 1 1; 2 2 2; 3 3 3]
+<span class="comment">% when a matrix is multiplied by an identity matrix, the result is</span>
+<span class="comment">% the same matrix</span>
+MatrixE_X_IdentityMatrixE = MatrixE * IdentityMatrixE
+
+<span class="comment">% a matrix can be used to display a table of values</span>
+angles = [0:30:360]; <span class="comment">% semicolon suppresses output</span>
+<span class="comment">% table contains a 4 column trig table</span>
+table = [angles' sind(angles)' cosd(angles)' tand(angles)'];
+
+<span class="comment">% the disp() function is an alternative to fprintf()</span>
+<span class="comment">% it implicitly appends a \n newline character at the end of the string</span>
+disp(<span class="string">'Trig Table'</span>) <span class="comment">% prints a heading</span>
+disp(<span class="string">' '</span>) <span class="comment">% prints a blank line</span>
+<span class="comment">% outputs the table headings, adjust spacing here to align headings with</span>
+<span class="comment">% values</span>
+disp(<span class="string">' Angle(Deg)   Sine      Cosine    Tangent'</span>)
+disp(table) <span class="comment">% outputs the values</span>
+
+<span class="comment">% plotting the results</span>
+clear <span class="string">angles</span> <span class="comment">% clears variable angles</span>
+angles = [0:1:360]; <span class="comment">% redefines with a smaller increment for plotting</span>
+plot(angles, sind(angles), angles, cosd(angles), angles, tand(angles))
+<span class="comment">% Adds title, axis labels, and gridlines</span>
+title(<span class="string">'Trigonometric Functions'</span>)
+xlabel(<span class="string">'Angle(Degrees)'</span>)
+ylabel(<span class="string">'sin, cos, tan'</span>)
+grid <span class="string">on</span>
+
+axis([0, 360, -2, 2]) <span class="comment">% sets the xmin, xmax, ymin, ymax of a plot</span>
+legend(<span class="string">'sin'</span>, <span class="string">'cos'</span>, <span class="string">'tan'</span>) <span class="comment">% adds a legend to define each data set</span>
+
+diary <span class="string">off</span> <span class="comment">% turns off the diary command</span>
+</pre><pre class="codeoutput">Output for Tutorial_02_3 written by Afeique Sheikh.
+
+Output is also sent to a file: "Tutorial_02_3_Output.txt"
+MatrixA =
+     1     2     3     4
+     5     6     7     8
+     9    10    11    12
+MatrixA(2,3) = 7
+
+Third row of MatrixA = 9 10 11 12
+
+Second column of MatrixA = 
+
+2 
+6 
+10
+
+MatrixB =
+     1     1     1
+     1     1     1
+MatrixC =
+     1     1     1     1
+     1     1     1     1
+     1     1     1     1
+     1     1     1     1
+MatrixD =
+     0     0
+     0     0
+     0     0
+IdentityMatrixE =
+     1     0     0
+     0     1     0
+     0     0     1
+MatrixE =
+     1     1     1
+     2     2     2
+     3     3     3
+MatrixE_X_IdentityMatrixE =
+     1     1     1
+     2     2     2
+     3     3     3
+Trig Table
+ 
+ Angle(Deg)   Sine      Cosine    Tangent
+         0         0    1.0000         0
+   30.0000    0.5000    0.8660    0.5774
+   60.0000    0.8660    0.5000    1.7321
+   90.0000    1.0000         0       Inf
+  120.0000    0.8660   -0.5000   -1.7321
+  150.0000    0.5000   -0.8660   -0.5774
+  180.0000         0   -1.0000         0
+  210.0000   -0.5000   -0.8660    0.5774
+  240.0000   -0.8660   -0.5000    1.7321
+  270.0000   -1.0000         0      -Inf
+  300.0000   -0.8660    0.5000   -1.7321
+  330.0000   -0.5000    0.8660   -0.5774
+  360.0000         0    1.0000         0
+</pre><img vspace="5" hspace="5" src="Tutorial_02_3_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Tutorial_02_3
+% Author:   Afeique Sheikh
+
+% Program description:
+% Purpose of this program is to demonstrate basic matrix operations,
+% creation of tabular results, plotting, and the use of the diary command
+% to write the contents of the command window to a file.
+
+% clear command window and all variables
+clc % clears contents of the command window
+clear % clears all defined variables from the workspace
+format compact % removes blank spaces in the output
+               % remove the word 'compact' to restore default spacing
+               
+% the diary command appends all output sent to the command window to the
+% file Tutorial_02_3_Output.txt
+% "append" means it will add onto the file without emptying it:
+% the file's previous contents will be preserved.
+diary DavidWest
+
+% output title and author to command window
+fprintf('Output for Tutorial_02_3 written by Afeique Sheikh.\n\n')
+fprintf('Output is also sent to a file: "Tutorial_02_3_Output.txt"\n')
+
+% a matrix is a mathematical table of values containing rows and columns
+% matrices also have mathematical operations and strict mathematical
+% properties defining their behaviour
+MatrixA = [1 2 3 4; 5 6 7 8; 9 10 11 12]
+
+% individual matrix elements can be accessed using parentheses (row, col)
+fprintf('MatrixA(2,3) = %i\n\n', MatrixA(2,3))
+% elements of an entire row can be output using the colon operator
+fprintf('Third row of MatrixA = %i %i %i %i\n\n', MatrixA(3,:))
+% elements of an entire column can also be output using the colon operator
+fprintf('Second column of MatrixA = \n\n%i \n%i \n%i\n\n', MatrixA(:,2))
+
+% specialized matrices can be created with the ones, zeros, and eye
+% functions
+MatrixB = ones(2,3) % matrix with 2 rows, 3 columns filled with ones
+MatrixC = ones(4) % matrix with 4 rows, 4 columns filled with ones
+MatrixD = zeros(3,2) % matrix with 3 rows, 2 columns filled with zeros
+IdentityMatrixE = eye(3) % creates a 3x3 identity matrix
+                         % by definition, identity matrices are square
+MatrixE = [1 1 1; 2 2 2; 3 3 3]
+% when a matrix is multiplied by an identity matrix, the result is 
+% the same matrix
+MatrixE_X_IdentityMatrixE = MatrixE * IdentityMatrixE
+
+% a matrix can be used to display a table of values
+angles = [0:30:360]; % semicolon suppresses output
+% table contains a 4 column trig table
+table = [angles' sind(angles)' cosd(angles)' tand(angles)'];
+
+% the disp() function is an alternative to fprintf()
+% it implicitly appends a \n newline character at the end of the string
+disp('Trig Table') % prints a heading
+disp(' ') % prints a blank line
+% outputs the table headings, adjust spacing here to align headings with
+% values
+disp(' Angle(Deg)   Sine      Cosine    Tangent')
+disp(table) % outputs the values
+
+% plotting the results
+clear angles % clears variable angles
+angles = [0:1:360]; % redefines with a smaller increment for plotting
+plot(angles, sind(angles), angles, cosd(angles), angles, tand(angles))
+% Adds title, axis labels, and gridlines
+title('Trigonometric Functions')
+xlabel('Angle(Degrees)')
+ylabel('sin, cos, tan')
+grid on
+
+axis([0, 360, -2, 2]) % sets the xmin, xmax, ymin, ymax of a plot
+legend('sin', 'cos', 'tan') % adds a legend to define each data set
+
+diary off % turns off the diary command
+##### SOURCE END #####
+--></body></html>

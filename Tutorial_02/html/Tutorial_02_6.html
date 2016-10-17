@@ -1,0 +1,279 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Tutorial_02_6</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-21"><meta name="DC.source" content="Tutorial_02_6.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Tutorial_02_6</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program description:</span>
+<span class="comment">% Purpose of this program is to demonstrate the different forms of for</span>
+<span class="comment">% loops in Matlab.</span>
+
+<span class="comment">% clear command window and all variables</span>
+clc <span class="comment">% clears contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the workspace</span>
+
+<span class="comment">% output title and author to command window</span>
+fprintf(<span class="string">'Output for Tutorial_02_6 written by Afeique Sheikh.\n\n'</span>)
+
+<span class="comment">% Using a for loop to sum the inverses of integers from 1 to 1,000,000.</span>
+<span class="comment">% The tic and toc commands measure the processing time.</span>
+tic <span class="comment">% starts stopwatch timing</span>
+SumN=0; <span class="comment">% initialize sum</span>
+<span class="keyword">for</span> N=1:1000000
+    SumN=SumN + 1/N; <span class="comment">% semicolon to suppress output</span>
+<span class="keyword">end</span>
+fprintf(<span class="string">'Sum 1/N of N=1 to 1,000,000 using a for loop = %g\n\n'</span>, SumN)
+
+toc <span class="comment">% stops stopwatch and outputs elapsed time</span>
+
+<span class="comment">% Using a vector to sum all the inverse of integers from 1 to 1,000,000.</span>
+tic <span class="comment">% start stopwatch</span>
+n=1:1000000; <span class="comment">% vector of integers from 1 to 1 million</span>
+sum_n=sum(1./n); <span class="comment">% compute sum using vectorized summation function</span>
+fprintf(<span class="string">'\n\nSum 1/n with n=1 to 1,000,000 using a vector = %g\n\n'</span>, sum_n)
+
+toc <span class="comment">% stop stopwatch and display elapsed time</span>
+clear <span class="comment">% clear all variables in the workspace</span>
+
+<span class="comment">% Computing the sum of series 1/1 - 1/2 + 1/3 - 1/4 + ...</span>
+tic <span class="comment">% start stopwatch</span>
+SumN = 0;
+sign = 1;
+<span class="keyword">for</span> N=1:1000000
+    SumN = SumN + sign*(1/N);
+    sign = -1*sign;
+<span class="keyword">end</span>
+fprintf(<span class="string">'\n\nSum (+/- 1)*(1/N)'</span>)
+fprintf(<span class="string">' with N=1 to 1,000,000 using for loop = %g\n\n'</span>, SumN)
+toc <span class="comment">% stop stopwatch and display elapsed time</span>
+
+<span class="comment">% Using a vector to sum 1/1 - 1/2 + 1/3 - 1/4 + ...</span>
+tic <span class="comment">% start stopwatch</span>
+n=1:2:999999; <span class="comment">% vector with only odd values from 1 to 999,999</span>
+<span class="comment">% add 1/n when n odd; subtract 1/n when n even</span>
+sum_n = sum(1./n - 1./(n+1));
+fprintf(<span class="string">'\n\nSum (+/- 1)*(1/N)'</span>)
+fprintf(<span class="string">' with N=1 to 1,000,000 using for loop = %g\n\n'</span>, sum_n)
+toc <span class="comment">% stop stopwatch and display elapsed time</span>
+clear <span class="comment">% clear all variables in workspace</span>
+
+<span class="comment">% Computing sum of the Taylor series for</span>
+<span class="comment">% sin(x) = x - x^3/3! + x^5/5! - ...</span>
+x=pi/6; <span class="comment">% angle in rads</span>
+
+<span class="comment">% Using a for loop to compute the Taylor series sum</span>
+
+tic <span class="comment">% start timing watch</span>
+TaylorSin=0; <span class="comment">% initialize Taylor series sum</span>
+sign = 1;
+<span class="comment">% sum first 5000 elements of series</span>
+<span class="keyword">for</span> N=1:2:99999 <span class="comment">% odd values from 1 to 99,999</span>
+    TaylorSin = TaylorSin + (sign*x^N)/factorial(N);
+<span class="keyword">end</span>
+fprintf(<span class="string">'\n\nTaylorSin(%g) with 5000 terms using a for loop = '</span>, x)
+fprintf(<span class="string">'%g\n\n'</span>, TaylorSin)
+toc <span class="comment">% stop timing watch and display elapsed time</span>
+
+<span class="comment">% Using vectors to compute the Taylor series sum</span>
+tic <span class="comment">% start timing stopwatch</span>
+n=1:4:99997; <span class="comment">% vector with every other odd value (1,5,9,13 ...) to 99,997</span>
+<span class="comment">% Compute sum of every other (positive) odd term (1,5,9,13 ...) and</span>
+<span class="comment">% every other (negative) odd term (3,7,11 ...)</span>
+TaylorSin = sum( (x.^n)./factorial(n) - (x.^(n+2))./factorial(n+2) );
+fprintf(<span class="string">'\n\nTaylorSin(%g) with 5000 terms using a vector = '</span>, x)
+fprintf(<span class="string">'%g\n\n'</span>, TaylorSin)
+toc <span class="comment">% stop timing stopwatch and display elapsed time</span>
+
+<span class="comment">% print conclusion</span>
+fprintf(<span class="string">'\n\nConclusion: '</span>)
+fprintf(<span class="string">'Vectors are typically faster than for loops.\n\n'</span>)
+</pre><pre class="codeoutput">Output for Tutorial_02_6 written by Afeique Sheikh.
+
+Sum 1/N of N=1 to 1,000,000 using a for loop = 14.3927
+
+Elapsed time is 0.009431 seconds.
+
+
+Sum 1/n with n=1 to 1,000,000 using a vector = 14.3927
+
+Elapsed time is 0.331462 seconds.
+
+
+Sum (+/- 1)*(1/N) with N=1 to 1,000,000 using for loop = 0.693147
+
+Elapsed time is 0.008162 seconds.
+
+
+Sum (+/- 1)*(1/N) with N=1 to 1,000,000 using for loop = 0.693147
+
+Elapsed time is 0.004075 seconds.
+
+
+TaylorSin(0.523599) with 5000 terms using a for loop = 0.547853
+
+Elapsed time is 0.413147 seconds.
+
+
+TaylorSin(0.523599) with 5000 terms using a vector = 0.5
+
+Elapsed time is 0.089528 seconds.
+
+
+Conclusion: Vectors are typically faster than for loops.
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Tutorial_02_6
+% Author:   Afeique Sheikh
+
+% Program description:
+% Purpose of this program is to demonstrate the different forms of for
+% loops in Matlab.
+
+% clear command window and all variables
+clc % clears contents of the command window
+clear % clears all defined variables from the workspace
+
+% output title and author to command window
+fprintf('Output for Tutorial_02_6 written by Afeique Sheikh.\n\n')
+
+% Using a for loop to sum the inverses of integers from 1 to 1,000,000.
+% The tic and toc commands measure the processing time.
+tic % starts stopwatch timing
+SumN=0; % initialize sum
+for N=1:1000000
+    SumN=SumN + 1/N; % semicolon to suppress output
+end
+fprintf('Sum 1/N of N=1 to 1,000,000 using a for loop = %g\n\n', SumN)
+
+toc % stops stopwatch and outputs elapsed time
+
+% Using a vector to sum all the inverse of integers from 1 to 1,000,000.
+tic % start stopwatch
+n=1:1000000; % vector of integers from 1 to 1 million
+sum_n=sum(1./n); % compute sum using vectorized summation function
+fprintf('\n\nSum 1/n with n=1 to 1,000,000 using a vector = %g\n\n', sum_n)
+
+toc % stop stopwatch and display elapsed time
+clear % clear all variables in the workspace
+
+% Computing the sum of series 1/1 - 1/2 + 1/3 - 1/4 + ...
+tic % start stopwatch
+SumN = 0;
+sign = 1;
+for N=1:1000000
+    SumN = SumN + sign*(1/N);
+    sign = -1*sign;
+end
+fprintf('\n\nSum (+/- 1)*(1/N)')
+fprintf(' with N=1 to 1,000,000 using for loop = %g\n\n', SumN)
+toc % stop stopwatch and display elapsed time
+
+% Using a vector to sum 1/1 - 1/2 + 1/3 - 1/4 + ...
+tic % start stopwatch
+n=1:2:999999; % vector with only odd values from 1 to 999,999
+% add 1/n when n odd; subtract 1/n when n even
+sum_n = sum(1./n - 1./(n+1));
+fprintf('\n\nSum (+/- 1)*(1/N)')
+fprintf(' with N=1 to 1,000,000 using for loop = %g\n\n', sum_n)
+toc % stop stopwatch and display elapsed time
+clear % clear all variables in workspace
+
+% Computing sum of the Taylor series for
+% sin(x) = x - x^3/3! + x^5/5! - ...
+x=pi/6; % angle in rads
+
+% Using a for loop to compute the Taylor series sum
+
+tic % start timing watch
+TaylorSin=0; % initialize Taylor series sum
+sign = 1;
+% sum first 5000 elements of series
+for N=1:2:99999 % odd values from 1 to 99,999
+    TaylorSin = TaylorSin + (sign*x^N)/factorial(N);
+end
+fprintf('\n\nTaylorSin(%g) with 5000 terms using a for loop = ', x)
+fprintf('%g\n\n', TaylorSin)
+toc % stop timing watch and display elapsed time
+
+% Using vectors to compute the Taylor series sum
+tic % start timing stopwatch
+n=1:4:99997; % vector with every other odd value (1,5,9,13 ...) to 99,997
+% Compute sum of every other (positive) odd term (1,5,9,13 ...) and
+% every other (negative) odd term (3,7,11 ...)
+TaylorSin = sum( (x.^n)./factorial(n) - (x.^(n+2))./factorial(n+2) );
+fprintf('\n\nTaylorSin(%g) with 5000 terms using a vector = ', x)
+fprintf('%g\n\n', TaylorSin)
+toc % stop timing stopwatch and display elapsed time
+
+% print conclusion
+fprintf('\n\nConclusion: ')
+fprintf('Vectors are typically faster than for loops.\n\n')
+
+##### SOURCE END #####
+--></body></html>

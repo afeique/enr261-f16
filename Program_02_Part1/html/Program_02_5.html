@@ -1,0 +1,227 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Program_02_5</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-28"><meta name="DC.source" content="Program_02_5.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Program_02_5</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program description:</span>
+<span class="comment">% Purpose of this program is to perform different vectorized</span>
+<span class="comment">% (element-by-element) operations on two row vectors, a and b, as defined</span>
+<span class="comment">% by exercise 2.5 on page 53.</span>
+
+<span class="comment">% clear command window and all variables</span>
+clc <span class="comment">% clears contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the workspace</span>
+format <span class="string">compact</span> <span class="comment">% remove extra line feeds</span>
+
+<span class="comment">% output title and author to command window</span>
+fprintf(<span class="string">'Output for Program_02_5 written by Afeique Sheikh.\n\n'</span>)
+
+fprintf(<span class="string">'Exercise 2.5 on page 53\n\n'</span>)
+
+a = [2 -1 5 0]
+b = [3 2 -1 4]
+
+disp(<span class="string">' '</span>) <span class="comment">% newline</span>
+format <span class="string">loose</span> <span class="comment">% put extra line-feeds (newlines) back in</span>
+
+fprintf(<span class="string">'(a) c = a - b'</span>)
+a - b
+
+fprintf(<span class="string">'(b) c = b + a - 3'</span>)
+b + a - 3
+
+fprintf(<span class="string">'(c) c = 2 * a + a .^ b'</span>)
+2 * a + a .^ b
+
+fprintf(<span class="string">'(d) c = b ./ a'</span>)
+b ./ a
+
+fprintf(<span class="string">'(e) c = b . a\n'</span>)
+fprintf(<span class="string">'This operation produces an error\n\n'</span>)
+<span class="comment">% b . a</span>
+
+fprintf(<span class="string">'(f) c = a .^ b'</span>)
+a .^ b
+
+fprintf(<span class="string">'(g) c = 2.^b+a'</span>)
+2.^b+a
+
+fprintf(<span class="string">'(h) c = 2*b/3.*a'</span>)
+2*b/3.*a
+
+fprintf(<span class="string">'(i) c = b*2.*a'</span>)
+b*2.*a
+</pre><pre class="codeoutput">Output for Program_02_5 written by Afeique Sheikh.
+
+Exercise 2.5 on page 53
+
+a =
+          2.00         -1.00          5.00             0
+b =
+          3.00          2.00         -1.00          4.00
+ 
+(a) c = a - b
+ans =
+
+         -1.00         -3.00          6.00         -4.00
+
+(b) c = b + a - 3
+ans =
+
+          2.00         -2.00          1.00          1.00
+
+(c) c = 2 * a + a .^ b
+ans =
+
+         12.00         -1.00         10.20             0
+
+(d) c = b ./ a
+ans =
+
+          1.50         -2.00         -0.20           Inf
+
+(e) c = b . a
+This operation produces an error
+
+(f) c = a .^ b
+ans =
+
+          8.00          1.00          0.20             0
+
+(g) c = 2.^b+a
+ans =
+
+         10.00          3.00          5.50         16.00
+
+(h) c = 2*b/3.*a
+ans =
+
+          4.00         -1.33         -3.33             0
+
+(i) c = b*2.*a
+ans =
+
+         12.00         -4.00        -10.00             0
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Program_02_5
+% Author:   Afeique Sheikh
+
+% Program description:
+% Purpose of this program is to perform different vectorized
+% (element-by-element) operations on two row vectors, a and b, as defined
+% by exercise 2.5 on page 53.
+
+% clear command window and all variables
+clc % clears contents of the command window
+clear % clears all defined variables from the workspace
+format compact % remove extra line feeds
+
+% output title and author to command window
+fprintf('Output for Program_02_5 written by Afeique Sheikh.\n\n')
+
+fprintf('Exercise 2.5 on page 53\n\n')
+
+a = [2 -1 5 0]
+b = [3 2 -1 4]
+
+disp(' ') % newline
+format loose % put extra line-feeds (newlines) back in
+
+fprintf('(a) c = a - b')
+a - b
+
+fprintf('(b) c = b + a - 3')
+b + a - 3
+
+fprintf('(c) c = 2 * a + a .^ b')
+2 * a + a .^ b
+
+fprintf('(d) c = b ./ a')
+b ./ a
+
+fprintf('(e) c = b . a\n')
+fprintf('This operation produces an error\n\n')
+% b . a
+
+fprintf('(f) c = a .^ b')
+a .^ b
+
+fprintf('(g) c = 2.^b+a')
+2.^b+a
+
+fprintf('(h) c = 2*b/3.*a')
+2*b/3.*a
+
+fprintf('(i) c = b*2.*a')
+b*2.*a
+
+##### SOURCE END #####
+--></body></html>

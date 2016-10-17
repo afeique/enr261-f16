@@ -1,0 +1,182 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Program_02_8a</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-28"><meta name="DC.source" content="Program_02_8a.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Program_02_8a</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program description:</span>
+<span class="comment">% Purpose of this program is to plot the speed and gear of a car as it</span>
+<span class="comment">% accelerates.</span>
+
+<span class="comment">% clear command window and all variables</span>
+clc <span class="comment">% clears contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the workspace</span>
+<span class="comment">% output title and author to command window</span>
+fprintf(<span class="string">'Output for Program_02_8a written by Afeique Sheikh.\n\n'</span>)
+
+<span class="comment">% resolution of milliseconds</span>
+res = 1000;
+<span class="comment">% time vector</span>
+t = 0:1/res:6;
+<span class="comment">% velocity vector</span>
+v = 1.5*t.^2;
+<span class="comment">% create new figure and save handle to ax</span>
+figure
+<span class="comment">% plot v to with r- = red-solid line</span>
+plot(t,v,<span class="string">'r-'</span>)
+title(<span class="string">'Speed of Car'</span>)
+xlabel(<span class="string">'Time (s)'</span>);
+ylabel(<span class="string">'Speed (m/s)'</span>);
+xlim([0 6]);
+ylim([0 60]);
+
+<span class="comment">% vector for gear selection</span>
+len = length(t);
+g = zeros(len);
+<span class="keyword">for</span> i=1:len
+    <span class="keyword">if</span> v(i) &gt;= 0 &amp;&amp; v(i) &lt; 3
+        g(i) = 1;
+    <span class="keyword">elseif</span> v(i) &gt;= 3 &amp;&amp; v(i) &lt; 8
+        g(i) = 2;
+    <span class="keyword">elseif</span> v(i) &gt;= 8 &amp;&amp; v(i) &lt; 15
+        g(i) = 3;
+    <span class="keyword">elseif</span> v(i) &gt;= 15 &amp;&amp; v(i) &lt; 25
+        g(i) = 4;
+    <span class="keyword">elseif</span> v(i) &gt;= 25
+        g(i) = 5;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="comment">% create new figure</span>
+figure
+<span class="comment">% plot g to with b- = red-solid line</span>
+plot(t,g,<span class="string">'b-'</span>)
+title(<span class="string">'Gear Selection'</span>)
+xlabel(<span class="string">'Time (s)'</span>);
+ylabel(<span class="string">'Gear'</span>);
+xlim([0 6]);
+ylim([0 6]);
+</pre><pre class="codeoutput">Output for Program_02_8a written by Afeique Sheikh.
+
+</pre><img vspace="5" hspace="5" src="Program_02_8a_01.png" alt=""> <img vspace="5" hspace="5" src="Program_02_8a_02.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Program_02_8a
+% Author:   Afeique Sheikh
+
+% Program description:
+% Purpose of this program is to plot the speed and gear of a car as it
+% accelerates.
+
+% clear command window and all variables
+clc % clears contents of the command window
+clear % clears all defined variables from the workspace
+% output title and author to command window
+fprintf('Output for Program_02_8a written by Afeique Sheikh.\n\n')
+
+% resolution of milliseconds
+res = 1000;
+% time vector
+t = 0:1/res:6;
+% velocity vector
+v = 1.5*t.^2;
+% create new figure and save handle to ax
+figure
+% plot v to with r- = red-solid line
+plot(t,v,'r-')
+title('Speed of Car')
+xlabel('Time (s)');
+ylabel('Speed (m/s)');
+xlim([0 6]);
+ylim([0 60]);
+
+% vector for gear selection
+len = length(t);
+g = zeros(len);
+for i=1:len
+    if v(i) >= 0 && v(i) < 3
+        g(i) = 1;
+    elseif v(i) >= 3 && v(i) < 8
+        g(i) = 2;
+    elseif v(i) >= 8 && v(i) < 15
+        g(i) = 3;
+    elseif v(i) >= 15 && v(i) < 25
+        g(i) = 4;
+    elseif v(i) >= 25
+        g(i) = 5;
+    end
+end
+% create new figure
+figure
+% plot g to with b- = red-solid line
+plot(t,g,'b-')
+title('Gear Selection')
+xlabel('Time (s)');
+ylabel('Gear');
+xlim([0 6]);
+ylim([0 6]);
+##### SOURCE END #####
+--></body></html>

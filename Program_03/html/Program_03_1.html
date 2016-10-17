@@ -1,0 +1,274 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Program_03_1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-10-05"><meta name="DC.source" content="Program_03_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Program_03_1</span>
+<span class="comment">% Author: Afeique Sheikh</span>
+
+<span class="comment">% Program Description:</span>
+<span class="comment">% The purpose of this program is to calculate the impedance of an RLC</span>
+<span class="comment">% circuit at a variety of frequencies.</span>
+
+<span class="comment">% Clear the command window and all variables</span>
+clc <span class="comment">% clear command window</span>
+clear <span class="comment">% clear all variables from workspace</span>
+format <span class="string">SHORTE</span>
+close <span class="string">all</span> <span class="comment">% close all existing figure windows</span>
+
+
+fprintf(<span class="string">'Output for Program_03_1 written by Afeique Sheikh.\n\n'</span>)
+
+w = 1000:250:10000;
+R = 2;
+L = 4e-3;
+C = 10e-6;
+w0 = 1/sqrt(L*C);
+Z = R + ((w*L) - (1./(w*C)))*1i;
+Z0 = R + ((w0*L) - (1/(w0*C)))*1i;
+Z0mag = abs(Z0);
+Z0ang = angle(Z0);
+Zmag = abs(Z);
+Zang = angle(Z);
+t = [w' Zmag' Zang'];
+fprintf(<span class="string">'     w (1/s)    Zmag (V/A)  Angle (rad)\n'</span>)
+disp(t);
+
+disp(<span class="string">' '</span>)
+fprintf(<span class="string">'The resonant frequency is: %g (1/s)\n\n'</span>, w0)
+
+figure
+subplot(2,1,1)
+plot(w, Zmag, w0, Z0mag, <span class="string">'r*'</span>)
+grid <span class="string">on</span>
+title(<span class="string">'RLC Series Circuit'</span>)
+xlabel(<span class="string">'Angular Frequency (1/s)'</span>)
+ylabel(<span class="string">'Magnitude of Impedance V/A'</span>)
+legend(<span class="string">'Zmag'</span>, <span class="string">'Zmag at w0'</span>, <span class="string">'Location'</span>, <span class="string">'NorthEast'</span>)
+
+subplot(2,1,2)
+plot(w, Zang, w0, Z0ang, <span class="string">'r*'</span>)
+grid <span class="string">on</span>
+title(<span class="string">'RLC Series Circuit'</span>)
+xlabel(<span class="string">'Angular Frequency (1/s)'</span>)
+ylabel(<span class="string">'Phase Angle of Impedance (rad)'</span>)
+legend(<span class="string">'Phase Angle'</span>, <span class="string">'Angle at w0'</span>, <span class="string">'Location'</span>, <span class="string">'SouthEast'</span>)
+
+figure
+
+subplot(2,2,1)
+Z4750 = R + ((4750*L) - (1/(4750*C)))*1i;
+Z4750_phasor = [complex(0,0), Z4750];
+plot(Z4750_phasor, <span class="string">'LineWidth'</span>, 2)
+grid <span class="string">on</span>
+title(<span class="string">'Phasor for w=4750 1/s'</span>)
+xlabel(<span class="string">'Real Z (V/A)'</span>)
+ylabel(<span class="string">'Imaginary Z (V/A)'</span>)
+
+subplot(2,2,2)
+Z5000 = R + ((5000*L) - (1/(5000*C)))*1i;
+Z5000_phasor = [complex(0,0), Z5000];
+plot(Z5000_phasor, <span class="string">'LineWidth'</span>, 2)
+grid <span class="string">on</span>
+title(<span class="string">'Phasor for w=5000 1/s'</span>)
+xlabel(<span class="string">'Real Z (V/A)'</span>)
+ylabel(<span class="string">'Imaginary Z (V/A)'</span>)
+
+subplot(2,2,3)
+Z5250 = R + ((5250*L) - (1/(5250*C)))*1i;
+Z5250_phasor = [complex(0,0), Z5250];
+plot(Z5250_phasor, <span class="string">'LineWidth'</span>, 2)
+grid <span class="string">on</span>
+title(<span class="string">'Phasor for w=5250 1/s'</span>)
+xlabel(<span class="string">'Real Z (V/A)'</span>)
+ylabel(<span class="string">'Imaginary Z (V/A)'</span>)
+</pre><pre class="codeoutput">Output for Program_03_1 written by Afeique Sheikh.
+
+     w (1/s)    Zmag (V/A)  Angle (rad)
+   1.0000e+03   9.6021e+01  -1.5500e+00
+   1.2500e+03   7.5027e+01  -1.5441e+00
+   1.5000e+03   6.0700e+01  -1.5378e+00
+   1.7500e+03   5.0183e+01  -1.5309e+00
+   2.0000e+03   4.2048e+01  -1.5232e+00
+   2.2500e+03   3.5501e+01  -1.5144e+00
+   2.5000e+03   3.0067e+01  -1.5042e+00
+   2.7500e+03   2.5442e+01  -1.4921e+00
+   3.0000e+03   2.1427e+01  -1.4773e+00
+   3.2500e+03   1.7881e+01  -1.4587e+00
+   3.5000e+03   1.4708e+01  -1.4344e+00
+   3.7500e+03   1.1837e+01  -1.4010e+00
+   4.0000e+03   9.2195e+00  -1.3521e+00
+   4.2500e+03   6.8289e+00  -1.2736e+00
+   4.5000e+03   4.6720e+00  -1.1284e+00
+   4.7500e+03   2.8659e+00  -7.9838e-01
+   5.0000e+03   2.0000e+00            0
+   5.2500e+03   2.7950e+00   7.7335e-01
+   5.5000e+03   4.3103e+00   1.0883e+00
+   5.7500e+03   5.9546e+00   1.2283e+00
+   6.0000e+03   7.6012e+00   1.3045e+00
+   6.2500e+03   9.2195e+00   1.3521e+00
+   6.5000e+03   1.0802e+01   1.3846e+00
+   6.7500e+03   1.2348e+01   1.4081e+00
+   7.0000e+03   1.3859e+01   1.4260e+00
+   7.2500e+03   1.5338e+01   1.4400e+00
+   7.5000e+03   1.6786e+01   1.4514e+00
+   7.7500e+03   1.8207e+01   1.4607e+00
+   8.0000e+03   1.9602e+01   1.4686e+00
+   8.2500e+03   2.0974e+01   1.4753e+00
+   8.5000e+03   2.2325e+01   1.4811e+00
+   8.7500e+03   2.3656e+01   1.4862e+00
+   9.0000e+03   2.4969e+01   1.4906e+00
+   9.2500e+03   2.6265e+01   1.4946e+00
+   9.5000e+03   2.7546e+01   1.4981e+00
+   9.7500e+03   2.8813e+01   1.5013e+00
+   1.0000e+04   3.0067e+01   1.5042e+00
+
+ 
+The resonant frequency is: 5000 (1/s)
+
+</pre><img vspace="5" hspace="5" src="Program_03_1_01.png" alt=""> <img vspace="5" hspace="5" src="Program_03_1_02.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Program_03_1
+% Author: Afeique Sheikh
+
+% Program Description:
+% The purpose of this program is to calculate the impedance of an RLC
+% circuit at a variety of frequencies.
+
+% Clear the command window and all variables
+clc % clear command window
+clear % clear all variables from workspace
+format SHORTE
+close all % close all existing figure windows
+
+
+fprintf('Output for Program_03_1 written by Afeique Sheikh.\n\n')
+
+w = 1000:250:10000;
+R = 2;
+L = 4e-3;
+C = 10e-6;
+w0 = 1/sqrt(L*C);
+Z = R + ((w*L) - (1./(w*C)))*1i;
+Z0 = R + ((w0*L) - (1/(w0*C)))*1i;
+Z0mag = abs(Z0);
+Z0ang = angle(Z0);
+Zmag = abs(Z);
+Zang = angle(Z);
+t = [w' Zmag' Zang'];
+fprintf('     w (1/s)    Zmag (V/A)  Angle (rad)\n')
+disp(t);
+
+disp(' ')
+fprintf('The resonant frequency is: %g (1/s)\n\n', w0) 
+
+figure
+subplot(2,1,1)
+plot(w, Zmag, w0, Z0mag, 'r*')
+grid on
+title('RLC Series Circuit')
+xlabel('Angular Frequency (1/s)')
+ylabel('Magnitude of Impedance V/A')
+legend('Zmag', 'Zmag at w0', 'Location', 'NorthEast')
+
+subplot(2,1,2)
+plot(w, Zang, w0, Z0ang, 'r*')
+grid on
+title('RLC Series Circuit')
+xlabel('Angular Frequency (1/s)')
+ylabel('Phase Angle of Impedance (rad)')
+legend('Phase Angle', 'Angle at w0', 'Location', 'SouthEast')
+
+figure
+
+subplot(2,2,1)
+Z4750 = R + ((4750*L) - (1/(4750*C)))*1i;
+Z4750_phasor = [complex(0,0), Z4750];
+plot(Z4750_phasor, 'LineWidth', 2)
+grid on
+title('Phasor for w=4750 1/s')
+xlabel('Real Z (V/A)')
+ylabel('Imaginary Z (V/A)')
+
+subplot(2,2,2)
+Z5000 = R + ((5000*L) - (1/(5000*C)))*1i;
+Z5000_phasor = [complex(0,0), Z5000];
+plot(Z5000_phasor, 'LineWidth', 2)
+grid on
+title('Phasor for w=5000 1/s')
+xlabel('Real Z (V/A)')
+ylabel('Imaginary Z (V/A)')
+
+subplot(2,2,3)
+Z5250 = R + ((5250*L) - (1/(5250*C)))*1i;
+Z5250_phasor = [complex(0,0), Z5250];
+plot(Z5250_phasor, 'LineWidth', 2)
+grid on
+title('Phasor for w=5250 1/s')
+xlabel('Real Z (V/A)')
+ylabel('Imaginary Z (V/A)')
+##### SOURCE END #####
+--></body></html>

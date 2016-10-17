@@ -1,0 +1,328 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Program_03_2a</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-10-05"><meta name="DC.source" content="Program_03_2a.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Program_03_2a</span>
+<span class="comment">% Author: Afeique Sheikh</span>
+
+<span class="comment">% Program Description:</span>
+<span class="comment">% The purpose of this program is to calculate the trajectory of a</span>
+<span class="comment">% projectile launched off a cliff and plot its motion.</span>
+
+<span class="comment">% Clear the command window and all variables</span>
+clc <span class="comment">% clear command window</span>
+clear <span class="comment">% clear all variables from workspace</span>
+format <span class="string">SHORTE</span>
+close <span class="string">all</span> <span class="comment">% close all existing figure windows</span>
+
+fprintf(<span class="string">'Output for Program_03_2a written by Afeique Sheikh.\n\n'</span>)
+
+
+<span class="comment">%theta = input('Enter the launch angle in degrees above the horizontal: ');</span>
+<span class="comment">%dt = input('Enter the time increment for tracking the projectile: ');</span>
+theta = 30
+dt = .01
+
+Vi = 50;
+
+y = 100;
+Vy = Vi*sind(theta);
+n = 1;
+
+<span class="keyword">while</span> y&gt;=0
+    y = y + Vy*dt;
+    Vy = Vy - 9.8*dt;
+    n = n+1;
+<span class="keyword">end</span>
+
+x = zeros(n);
+y = zeros(n);
+t = zeros(n);
+V = zeros(n);
+Vy = zeros(n);
+Vx = zeros(n);
+Vy(1) = Vi*sind(theta);
+Vx(1) = Vi*cosd(theta);
+
+i=2;
+y(1) = 100;
+V(1) = 50;
+t(1) = 0;
+x(1) = 0;
+
+<span class="keyword">while</span> i&lt;=n
+    t(i) = t(i-1) + dt;
+    y(i) = y(i-1) + Vy(i-1)*dt;
+    Vy(i) = Vy(i-1) - 9.8*dt;
+    x(i) = x(i-1) + Vx(i-1)*dt;
+    Vx(i) = Vx(i-1);
+    i = i+1;
+<span class="keyword">end</span>
+
+fprintf(<span class="string">'\nValues at launch:\n'</span>)
+fprintf(<span class="string">'  Time = 0 seconds\n'</span>)
+fprintf(<span class="string">'  x = 0 m\n'</span>)
+fprintf(<span class="string">'  y = 100 m\n'</span>)
+fprintf(<span class="string">'  Vx = %g m/s\n'</span>, Vx(1))
+fprintf(<span class="string">'  Vy = %g m/s\n'</span>, Vy(1))
+disp(<span class="string">' '</span>)
+fprintf(<span class="string">'Values at point of contact:\n'</span>)
+fprintf(<span class="string">'  Number of points = %d\n'</span>, n)
+fprintf(<span class="string">'  Time = %g seconds\n'</span>, t(n))
+fprintf(<span class="string">'  x = %g m\n'</span>, x(n))
+fprintf(<span class="string">'  y = %g m\n'</span>, y(n))
+fprintf(<span class="string">'  Vx = %g m\n'</span>, Vx(n))
+fprintf(<span class="string">'  Vy = %g m\n'</span>, Vy(n))
+
+
+
+figure
+
+plot(x, y)
+grid <span class="string">on</span>
+title(<span class="string">'Trajectory of a Projectile Launched from a Cliff'</span>)
+xlabel(<span class="string">'Horizontal Position (m)'</span>)
+ylabel(<span class="string">'Vertical Position (m)'</span>)
+
+figure
+
+subplot(2,2,1)
+plot(t, x)
+grid <span class="string">on</span>
+title(<span class="string">'Flight of a Projectile'</span>)
+xlabel(<span class="string">'Time (sec)'</span>)
+ylabel(<span class="string">'Horizontal Position (m)'</span>)
+
+
+subplot(2,2,2)
+plot(t, y)
+grid <span class="string">on</span>
+title(<span class="string">'Flight of a Projectile'</span>)
+xlabel(<span class="string">'Time (sec)'</span>)
+ylabel(<span class="string">'Vertical Position (m)'</span>)
+
+
+subplot(2,2,3)
+plot(t, Vx)
+grid <span class="string">on</span>
+title(<span class="string">'Flight of a Projectile'</span>)
+xlabel(<span class="string">'Time (sec)'</span>)
+ylabel(<span class="string">'Horizontal Velocity (m)'</span>)
+
+
+subplot(2,2,4)
+plot(t, Vy)
+grid <span class="string">on</span>
+title(<span class="string">'Flight of a Projectile'</span>)
+xlabel(<span class="string">'Time (sec)'</span>)
+ylabel(<span class="string">'Vertical Velocity (m)'</span>)
+</pre><pre class="codeoutput">Output for Program_03_2a written by Afeique Sheikh.
+
+
+theta =
+
+    30
+
+
+dt =
+
+   1.0000e-02
+
+
+Values at launch:
+  Time = 0 seconds
+  x = 0 m
+  y = 100 m
+  Vx = 43.3013 m/s
+  Vy = 25 m/s
+ 
+Values at point of contact:
+  Number of points = 776
+  Time = 7.75 seconds
+  x = 335.585 m
+  y = -0.1765 m
+  Vx = 43.3013 m
+  Vy = -50.95 m
+</pre><img vspace="5" hspace="5" src="Program_03_2a_01.png" alt=""> <img vspace="5" hspace="5" src="Program_03_2a_02.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Program_03_2a
+% Author: Afeique Sheikh
+
+% Program Description:
+% The purpose of this program is to calculate the trajectory of a
+% projectile launched off a cliff and plot its motion.
+
+% Clear the command window and all variables
+clc % clear command window
+clear % clear all variables from workspace
+format SHORTE
+close all % close all existing figure windows
+
+fprintf('Output for Program_03_2a written by Afeique Sheikh.\n\n')
+
+
+%theta = input('Enter the launch angle in degrees above the horizontal: ');
+%dt = input('Enter the time increment for tracking the projectile: ');
+theta = 30
+dt = .01
+
+Vi = 50;
+
+y = 100;
+Vy = Vi*sind(theta);
+n = 1;
+
+while y>=0
+    y = y + Vy*dt;
+    Vy = Vy - 9.8*dt;
+    n = n+1;
+end
+
+x = zeros(n);
+y = zeros(n);
+t = zeros(n);
+V = zeros(n);
+Vy = zeros(n);
+Vx = zeros(n);
+Vy(1) = Vi*sind(theta);
+Vx(1) = Vi*cosd(theta);
+
+i=2;
+y(1) = 100;
+V(1) = 50;
+t(1) = 0;
+x(1) = 0;
+
+while i<=n
+    t(i) = t(i-1) + dt;
+    y(i) = y(i-1) + Vy(i-1)*dt;
+    Vy(i) = Vy(i-1) - 9.8*dt;
+    x(i) = x(i-1) + Vx(i-1)*dt;
+    Vx(i) = Vx(i-1);
+    i = i+1;
+end
+
+fprintf('\nValues at launch:\n')
+fprintf('  Time = 0 seconds\n')
+fprintf('  x = 0 m\n')
+fprintf('  y = 100 m\n')
+fprintf('  Vx = %g m/s\n', Vx(1))
+fprintf('  Vy = %g m/s\n', Vy(1))
+disp(' ')
+fprintf('Values at point of contact:\n')
+fprintf('  Number of points = %d\n', n)
+fprintf('  Time = %g seconds\n', t(n))
+fprintf('  x = %g m\n', x(n))
+fprintf('  y = %g m\n', y(n))
+fprintf('  Vx = %g m\n', Vx(n))
+fprintf('  Vy = %g m\n', Vy(n))
+
+
+
+figure
+
+plot(x, y)
+grid on
+title('Trajectory of a Projectile Launched from a Cliff')
+xlabel('Horizontal Position (m)')
+ylabel('Vertical Position (m)')
+
+figure
+
+subplot(2,2,1)
+plot(t, x)
+grid on
+title('Flight of a Projectile')
+xlabel('Time (sec)')
+ylabel('Horizontal Position (m)')
+
+
+subplot(2,2,2)
+plot(t, y)
+grid on
+title('Flight of a Projectile')
+xlabel('Time (sec)')
+ylabel('Vertical Position (m)')
+
+
+subplot(2,2,3)
+plot(t, Vx)
+grid on
+title('Flight of a Projectile')
+xlabel('Time (sec)')
+ylabel('Horizontal Velocity (m)')
+
+
+subplot(2,2,4)
+plot(t, Vy)
+grid on
+title('Flight of a Projectile')
+xlabel('Time (sec)')
+ylabel('Vertical Velocity (m)')
+
+##### SOURCE END #####
+--></body></html>

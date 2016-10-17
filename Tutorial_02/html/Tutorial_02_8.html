@@ -1,0 +1,183 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Tutorial_02_8</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-21"><meta name="DC.source" content="Tutorial_02_8.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Tutorial_02_8</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program description:</span>
+<span class="comment">% Purpose of this program is to demonstrate the use of if and if-else</span>
+<span class="comment">% constructors.</span>
+
+<span class="comment">% clear command window and all variables</span>
+clc <span class="comment">% clears contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the workspace</span>
+diary <span class="string">Tutorial_02_8.txt</span> <span class="comment">% file for recording multiple runs of the program</span>
+<span class="comment">% output title and author to command window</span>
+fprintf(<span class="string">'Output for Tutorial_02_8 written by Afeique Sheikh.\n\n'</span>)
+
+<span class="comment">% input numerical grade</span>
+grade = input(<span class="string">'Enter a numerical grade (&gt;= 60 is passing): '</span>);
+<span class="comment">% Heading for the if test output</span>
+fprintf(<span class="string">'\nif (grade &gt;= 60)\n\t'</span>)
+fprintf(<span class="string">'fprintf(''Your grade is passing.\\n'')\nend\n\n'</span>)
+<span class="keyword">if</span> (grade &gt;= 60)
+    fprintf(<span class="string">'Your grade is passing.\n'</span>)
+<span class="keyword">end</span>
+
+<span class="comment">% heading for the if-else test output</span>
+fprintf(<span class="string">'\n\nif (grade &gt;= 60)\n\t'</span>)
+fprintf(<span class="string">'fprintf(''Your grade is passing.\\n'')\nelse\n\t'</span>)
+fprintf(<span class="string">'fprintf(''Your grade is failing.\\n'')\nend'</span>)
+fprintf(<span class="string">'Your grade is '</span>)
+<span class="keyword">if</span> (grade &gt;= 60)
+    fprintf(<span class="string">'passing'</span>)
+<span class="keyword">else</span>
+    fprintf(<span class="string">'failing'</span>)
+<span class="keyword">end</span>
+fprintf(<span class="string">'.\n'</span>)
+
+<span class="comment">% logical operators can be used in an if test to link multiple relational</span>
+<span class="comment">% values</span>
+<span class="comment">% testing to see if a resistor falls within tolerance of a nominal value</span>
+nominal = 100; <span class="comment">% nominal value of resistance in ohms</span>
+tol = 10; <span class="comment">% tolerance in ohms</span>
+r = input(<span class="string">'Enter the resistance value in Ohms: '</span>);
+
+<span class="comment">% in the conditional below, (nominal-tol) &lt;= r &lt;= (nominal+tol)</span>
+<span class="comment">% must be written using a logical operator. Note that Matlab prefers</span>
+<span class="comment">% the logical operator written twice in if-statements</span>
+fprintf(<span class="string">'\nThe resistance is '</span>)
+<span class="keyword">if</span> (r &lt; (nominal-tol) || r &gt; (nominal+tol))
+    fprintf(<span class="string">'not '</span>)
+<span class="keyword">end</span>
+fprintf(<span class="string">'within %g (+/-) %g\n'</span>, nominal, tol)
+
+diary <span class="string">off</span> <span class="comment">% close the diary file</span>
+</pre><pre class="codeoutput">Output for Tutorial_02_8 written by Afeique Sheikh.
+
+</pre><pre class="codeoutput error">Error using input
+Cannot call INPUT from EVALC.
+Error in Tutorial_02_8 (line 16)
+grade = input('Enter a numerical grade (&gt;= 60 is passing): ');</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Tutorial_02_8
+% Author:   Afeique Sheikh
+
+% Program description:
+% Purpose of this program is to demonstrate the use of if and if-else
+% constructors.
+
+% clear command window and all variables
+clc % clears contents of the command window
+clear % clears all defined variables from the workspace
+diary Tutorial_02_8.txt % file for recording multiple runs of the program
+% output title and author to command window
+fprintf('Output for Tutorial_02_8 written by Afeique Sheikh.\n\n')
+
+% input numerical grade
+grade = input('Enter a numerical grade (>= 60 is passing): ');
+% Heading for the if test output
+fprintf('\nif (grade >= 60)\n\t')
+fprintf('fprintf(''Your grade is passing.\\n'')\nend\n\n')
+if (grade >= 60)
+    fprintf('Your grade is passing.\n')
+end
+
+% heading for the if-else test output
+fprintf('\n\nif (grade >= 60)\n\t')
+fprintf('fprintf(''Your grade is passing.\\n'')\nelse\n\t')
+fprintf('fprintf(''Your grade is failing.\\n'')\nend')
+fprintf('Your grade is ')
+if (grade >= 60)
+    fprintf('passing')
+else
+    fprintf('failing')
+end
+fprintf('.\n')
+
+% logical operators can be used in an if test to link multiple relational
+% values
+% testing to see if a resistor falls within tolerance of a nominal value
+nominal = 100; % nominal value of resistance in ohms
+tol = 10; % tolerance in ohms
+r = input('Enter the resistance value in Ohms: ');
+
+% in the conditional below, (nominal-tol) <= r <= (nominal+tol)
+% must be written using a logical operator. Note that Matlab prefers
+% the logical operator written twice in if-statements
+fprintf('\nThe resistance is ')
+if (r < (nominal-tol) || r > (nominal+tol))
+    fprintf('not ')
+end
+fprintf('within %g (+/-) %g\n', nominal, tol)
+
+diary off % close the diary file
+
+
+##### SOURCE END #####
+--></body></html>

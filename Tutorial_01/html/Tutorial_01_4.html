@@ -1,0 +1,244 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Tutorial_01_4</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-14"><meta name="DC.source" content="Tutorial_01_4.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Tutorial_01_4</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program Description:</span>
+<span class="comment">% The purpose of this program is to demonstrate how to create 2D plots.</span>
+
+<span class="comment">% Clear the command window and all variables</span>
+clc <span class="comment">% clear contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the Matlab workspace</span>
+close <span class="string">all</span> <span class="comment">% closes all figure windows</span>
+
+<span class="comment">% Output the title and author to the command window.</span>
+fprintf(<span class="string">'Output for Tutorial_01_4 written by Afeique Sheikh.\n\n'</span>)
+
+<span class="comment">% Define the x and y vectors</span>
+x = [0:0.25:3]; <span class="comment">% vector of numbers from 0 to 3 in increments of 0.25</span>
+y = 10*exp(-x);
+
+<span class="comment">% plot() opens Figure Window 1 and creates a plot of discrete points</span>
+help <span class="string">plot</span> <span class="comment">% the help command will output the help text for plot()</span>
+plot(x, y, <span class="string">'r*'</span>) <span class="comment">% 'r*' indicates points are plotted with red asterisks</span>
+                 <span class="comment">% other formatting options are listed in the help</span>
+
+grid <span class="string">on</span>                            <span class="comment">% adds grilines to the graph</span>
+xlabel(<span class="string">'Independent Variable (X)'</span>) <span class="comment">% Adds a label below the X axis</span>
+ylabel(<span class="string">'Dependent Variable (Y)'</span>)   <span class="comment">% Adds a label left of the Y axis</span>
+title(<span class="string">'Y = 10*exp(-X)'</span>)            <span class="comment">% Adds a title above the graph</span>
+
+figure  <span class="comment">% Opens Figure Window 2</span>
+        <span class="comment">% Without the 'figure' command, the next plot would erase</span>
+        <span class="comment">% the first plot in Figure Window 1</span>
+
+<span class="comment">% The fplot() command allows a function to be plotted over a given</span>
+<span class="comment">% domain. It automatically determines an appropriate delta x for</span>
+<span class="comment">% the given domain to prevent aliasing: a false image created when</span>
+<span class="comment">% sampling is not frequent enough (delta x is too large)</span>
+fplot(<span class="string">'3.5^(-0.5*x)*cos(6*x)'</span>, [-2.0, 4.0])
+
+grid <span class="string">on</span>                            <span class="comment">% adds grilines to the graph</span>
+xlabel(<span class="string">'Independent Variable (X)'</span>) <span class="comment">% Adds a label below the X axis</span>
+ylabel(<span class="string">'Dependent Variable (Y)'</span>)   <span class="comment">% Adds a label left of the Y axis</span>
+title(<span class="string">'Y = 3.5^(-0.5*X)*cos(6*X)'</span>) <span class="comment">% Adds a title above the graph</span>
+</pre><pre class="codeoutput">Output for Tutorial_01_4 written by Afeique Sheikh.
+
+ PLOT   Linear plot. 
+    PLOT(X,Y) plots vector Y versus vector X. If X or Y is a matrix,
+    then the vector is plotted versus the rows or columns of the matrix,
+    whichever line up.  If X is a scalar and Y is a vector, disconnected
+    line objects are created and plotted as discrete points vertically at
+    X.
+ 
+    PLOT(Y) plots the columns of Y versus their index.
+    If Y is complex, PLOT(Y) is equivalent to PLOT(real(Y),imag(Y)).
+    In all other uses of PLOT, the imaginary part is ignored.
+ 
+    Various line types, plot symbols and colors may be obtained with
+    PLOT(X,Y,S) where S is a character string made from one element
+    from any or all the following 3 columns:
+ 
+           b     blue          .     point              -     solid
+           g     green         o     circle             :     dotted
+           r     red           x     x-mark             -.    dashdot 
+           c     cyan          +     plus               --    dashed   
+           m     magenta       *     star             (none)  no line
+           y     yellow        s     square
+           k     black         d     diamond
+           w     white         v     triangle (down)
+                               ^     triangle (up)
+                               &lt;     triangle (left)
+                               &gt;     triangle (right)
+                               p     pentagram
+                               h     hexagram
+                          
+    For example, PLOT(X,Y,'c+:') plots a cyan dotted line with a plus 
+    at each data point; PLOT(X,Y,'bd') plots blue diamond at each data 
+    point but does not draw any line.
+ 
+    PLOT(X1,Y1,S1,X2,Y2,S2,X3,Y3,S3,...) combines the plots defined by
+    the (X,Y,S) triples, where the X's and Y's are vectors or matrices 
+    and the S's are strings.  
+ 
+    For example, PLOT(X,Y,'y-',X,Y,'go') plots the data twice, with a
+    solid yellow line interpolating green circles at the data points.
+ 
+    The PLOT command, if no color is specified, makes automatic use of
+    the colors specified by the axes ColorOrder property.  By default,
+    PLOT cycles through the colors in the ColorOrder property.  For
+    monochrome systems, PLOT cycles over the axes LineStyleOrder property.
+ 
+    Note that RGB colors in the ColorOrder property may differ from
+    similarly-named colors in the (X,Y,S) triples.  For example, the 
+    second axes ColorOrder property is medium green with RGB [0 .5 0],
+    while PLOT(X,Y,'g') plots a green line with RGB [0 1 0].
+ 
+    If you do not specify a marker type, PLOT uses no marker. 
+    If you do not specify a line style, PLOT uses a solid line.
+ 
+    PLOT(AX,...) plots into the axes with handle AX.
+ 
+    PLOT returns a column vector of handles to lineseries objects, one
+    handle per plotted line. 
+ 
+    The X,Y pairs, or X,Y,S triples, can be followed by 
+    parameter/value pairs to specify additional properties 
+    of the lines. For example, PLOT(X,Y,'LineWidth',2,'Color',[.6 0 0]) 
+    will create a plot with a dark red line width of 2 points.
+ 
+    Example
+       x = -pi:pi/10:pi;
+       y = tan(sin(x)) - sin(tan(x));
+       plot(x,y,'--rs','LineWidth',2,...
+                       'MarkerEdgeColor','k',...
+                       'MarkerFaceColor','g',...
+                       'MarkerSize',10)
+ 
+    See also PLOTTOOLS, SEMILOGX, SEMILOGY, LOGLOG, PLOTYY, PLOT3, GRID,
+    TITLE, XLABEL, YLABEL, AXIS, AXES, HOLD, LEGEND, SUBPLOT, SCATTER.
+
+    Reference page in Doc Center
+       doc plot
+
+    Other functions named plot
+
+       alphaShape/plot    digraph/plot     graph/plot    timeseries/plot
+       datetime/plot      duration/plot
+
+Warning: Char input to fplot will be removed in a future release. Use
+fplot(@(x)3.5.^(-0.5.*x).*cos(6.*x)) instead. 
+</pre><img vspace="5" hspace="5" src="Tutorial_01_4_01.png" alt=""> <img vspace="5" hspace="5" src="Tutorial_01_4_02.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Tutorial_01_4
+% Author:   Afeique Sheikh
+
+% Program Description:
+% The purpose of this program is to demonstrate how to create 2D plots.
+
+% Clear the command window and all variables
+clc % clear contents of the command window
+clear % clears all defined variables from the Matlab workspace
+close all % closes all figure windows
+
+% Output the title and author to the command window.
+fprintf('Output for Tutorial_01_4 written by Afeique Sheikh.\n\n')
+
+% Define the x and y vectors
+x = [0:0.25:3]; % vector of numbers from 0 to 3 in increments of 0.25
+y = 10*exp(-x);
+
+% plot() opens Figure Window 1 and creates a plot of discrete points
+help plot % the help command will output the help text for plot()
+plot(x, y, 'r*') % 'r*' indicates points are plotted with red asterisks
+                 % other formatting options are listed in the help
+
+grid on                            % adds grilines to the graph
+xlabel('Independent Variable (X)') % Adds a label below the X axis
+ylabel('Dependent Variable (Y)')   % Adds a label left of the Y axis
+title('Y = 10*exp(-X)')            % Adds a title above the graph
+
+figure  % Opens Figure Window 2
+        % Without the 'figure' command, the next plot would erase
+        % the first plot in Figure Window 1
+
+% The fplot() command allows a function to be plotted over a given
+% domain. It automatically determines an appropriate delta x for
+% the given domain to prevent aliasing: a false image created when
+% sampling is not frequent enough (delta x is too large)
+fplot('3.5^(-0.5*x)*cos(6*x)', [-2.0, 4.0])
+
+grid on                            % adds grilines to the graph
+xlabel('Independent Variable (X)') % Adds a label below the X axis
+ylabel('Dependent Variable (Y)')   % Adds a label left of the Y axis
+title('Y = 3.5^(-0.5*X)*cos(6*X)') % Adds a title above the graph
+
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,84 @@
+Output for Tutorial_02_9 written by Afeique Sheikh.
+
+Enter a numerical grade (0 to 100): 45
+
+Your letter grade using if-elseif-else is: F
+
+Your letter grade using multiple if-statements is: F
+
+Enter a letter grade (A, B, C, D, or F): X
+
+Your numerical grade is INVALID.
+
+Output for Tutorial_02_9 written by Afeique Sheikh.
+
+Enter a numerical grade (0 to 100): 55
+
+Your letter grade using if-elseif-el is: F
+
+Your letter grade using multiple if-statements is: F
+
+Enter a letter grade (A, B, C, D, or F): F
+
+Your numerical grade is < 60
+
+Output for Tutorial_02_9 written by Afeique Sheikh.
+
+Enter a numerical grade (0 to 100): 65
+
+Your letter grade using if-elseif-else is: D
+
+Your letter grade using multiple if-statements is: D
+
+Enter a letter grade (A, B, C, D, or F): D
+
+Your numerical grade is >= 60 and < 70
+
+Output for Tutorial_02_9 written by Afeique Sheikh.
+
+Enter a numerical grade (0 to 100): 75
+
+Your letter grade using if-elseif-else is: C
+
+Your letter grade using multiple if-statements is: D
+
+Enter a letter grade (A, B, C, D, or F): C
+
+Your numerical grade is >= 70 and < 80
+
+Output for Tutorial_02_9 written by Afeique Sheikh.
+
+Enter a numerical grade (0 to 100): 85
+
+Your letter grade using if-elseif-else is: B
+
+Your letter grade using multiple if-statements is: D
+
+Enter a letter grade (A, B, C, D, or F): B
+
+Your numerical grade is >= 80 and < 90
+
+Output for Tutorial_02_9 written by Afeique Sheikh.
+
+Enter a numerical grade (0 to 100): 95
+
+Your letter grade using if-elseif-else is: A
+
+Your letter grade using multiple if-statements is: D
+
+Enter a letter grade (A, B, C, D, or F): A
+
+Your numerical grade is >= 90
+
+Output for Tutorial_02_9 written by Afeique Sheikh.
+
+Enter a numerical grade (0 to 100): 99
+
+Your letter grade using if-elseif-else is: A
+
+Your letter grade using multiple if-statements is: D
+
+Enter a letter grade (A, B, C, D, or F): X
+
+Your numerical grade is INVALID.
+

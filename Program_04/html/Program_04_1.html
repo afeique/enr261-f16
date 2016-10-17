@@ -1,0 +1,380 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Program_04_1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-10-10"><meta name="DC.source" content="Program_04_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Program_04_1</span>
+<span class="comment">% Author: Afeique Sheikh</span>
+
+<span class="comment">% Program Description:</span>
+<span class="comment">% The purpose of this program is to demonstrate how to read from and write to a</span>
+<span class="comment">% text (.txt) file</span>
+
+<span class="comment">% Clear the command window and all variables</span>
+clc <span class="comment">% clear command window</span>
+clear <span class="comment">% clear all variables from workspace</span>
+format <span class="string">compact</span> <span class="comment">% remove extra blank lines after output</span>
+
+fprintf(<span class="string">'Output for Program_04_1 written by Afeique Sheikh.\n\n'</span>)
+
+<span class="comment">% Before running, make sure that Ch04_Data_Sp10.xlsx is closed and stored in</span>
+<span class="comment">% the current working directory, otherwise Matlab will be unable to read it</span>
+file = <span class="string">'Ch04_Data_Sp10.xlsx'</span>;
+sheet = <span class="string">'Coins'</span>;
+fprintf(<span class="string">'Original data read from %s sheet in %s\n\n'</span>, sheet, file)
+
+<span class="comment">% load coin data from Coins spreadsheet</span>
+CoinMatrix = xlsread(file, <span class="string">'Coins'</span>, <span class="string">'B3:G102'</span>);
+
+<span class="comment">% matrix indices</span>
+CHANGE = 1;
+QUARTERS = 2;
+DIMES = 3;
+NICKELS = 4;
+PENNIES = 5;
+TOTAL = 6;
+
+<span class="comment">% print table header</span>
+fprintf(<span class="string">'Change Due (cents) \t Quarters \t Dimes \t Nickels \t Pennies \t Total Coins\n'</span>)
+
+nRows = size(CoinMatrix, 1);
+nCols = size(CoinMatrix, 2);
+CoinTotals = zeros(1,9);
+<span class="comment">% use integer division fix() function to calculate change due</span>
+<span class="keyword">for</span> row=1:nRows
+    <span class="comment">% variable for storing remainder of change due</span>
+    changeDue = CoinMatrix(row, CHANGE);
+
+    <span class="comment">% integer divide change due by 25 cents</span>
+    <span class="comment">% store integer result as this row's num quarters in matrix</span>
+    CoinMatrix(row, QUARTERS) = fix(changeDue/25);
+    <span class="comment">% subtract amount from change remainder</span>
+    changeDue = changeDue - 25*CoinMatrix(row, QUARTERS);
+
+    <span class="comment">% integer divide change due by 10 cents</span>
+    <span class="comment">% store integer result as this row's num dimes in matrix</span>
+    CoinMatrix(row, DIMES) = fix(changeDue/10);
+    <span class="comment">% subtract amount from change remainder</span>
+    changeDue = changeDue - 10*CoinMatrix(row, DIMES);
+
+    <span class="comment">% integer divide change due by 5 cents</span>
+    <span class="comment">% store integer result as this row's num nickels in matrix</span>
+    CoinMatrix(row, NICKELS) = fix(changeDue/5);
+    <span class="comment">% subtract amount from change remainder</span>
+    changeDue = changeDue - 5*CoinMatrix(row, NICKELS);
+
+    <span class="comment">% change remainder is in pennies, store in matrix row's num pennies</span>
+    CoinMatrix(row, PENNIES) = changeDue;
+
+    <span class="comment">% sum this row's coin counts to get total number of coins</span>
+    CoinMatrix(row, TOTAL) = sum(CoinMatrix(row, QUARTERS:PENNIES));
+
+    <span class="comment">% keep track of each time a particular total occurs using vector</span>
+    CoinTotals( CoinMatrix(row, TOTAL) ) = CoinTotals( CoinMatrix(row, TOTAL) ) + 1;
+
+    <span class="comment">% print out this row's counts</span>
+    fprintf(<span class="string">'       %2d         \t    %d    \t   %d   \t   %d    \t    %d   \t     %d     \n'</span>,<span class="keyword">...</span>
+        CoinMatrix(row, CHANGE), CoinMatrix(row, QUARTERS),<span class="keyword">...</span>
+        CoinMatrix(row, DIMES), CoinMatrix(row, NICKELS),<span class="keyword">...</span>
+        CoinMatrix(row, PENNIES), CoinMatrix(row, TOTAL))
+<span class="keyword">end</span>
+
+<span class="comment">% write the matrix to the spreadsheet</span>
+xlswrite(file, CoinMatrix(:, QUARTERS:TOTAL), sheet, <span class="string">'C4:G102'</span>)
+
+<span class="comment">% print coin totals, and number of times each total occurs</span>
+disp(<span class="string">' '</span>)
+fprintf(<span class="string">'Coin Total \t Number of Occurrences\n'</span>)
+nRows = length(CoinTotals);
+<span class="keyword">for</span> i=1:nRows
+    fprintf(<span class="string">'     %d      \t        %d\n'</span>, i, CoinTotals(i))
+<span class="keyword">end</span>
+<span class="comment">% sum the CoinTotals vector and store as last item in vector</span>
+CoinTotals(10) = sum(CoinTotals);
+fprintf(<span class="string">'    Sum      \t        %d\n'</span>, CoinTotals(10))
+
+<span class="comment">% write CoinTotals vector to spreadsheet</span>
+xlswrite(file, CoinTotals', sheet, <span class="string">'J4:J13'</span>)
+
+fprintf(<span class="string">'\nAll these values have been written to the %s sheet in %s\n\n'</span>, sheet, file)
+</pre><pre class="codeoutput">Output for Program_04_1 written by Afeique Sheikh.
+
+Original data read from Coins sheet in Ch04_Data_Sp10.xlsx
+
+Change Due (cents) 	 Quarters 	 Dimes 	 Nickels 	 Pennies 	 Total Coins
+        1         	    0    	   0   	   0    	    1   	     1     
+        2         	    0    	   0   	   0    	    2   	     2     
+        3         	    0    	   0   	   0    	    3   	     3     
+        4         	    0    	   0   	   0    	    4   	     4     
+        5         	    0    	   0   	   1    	    0   	     1     
+        6         	    0    	   0   	   1    	    1   	     2     
+        7         	    0    	   0   	   1    	    2   	     3     
+        8         	    0    	   0   	   1    	    3   	     4     
+        9         	    0    	   0   	   1    	    4   	     5     
+       10         	    0    	   1   	   0    	    0   	     1     
+       11         	    0    	   1   	   0    	    1   	     2     
+       12         	    0    	   1   	   0    	    2   	     3     
+       13         	    0    	   1   	   0    	    3   	     4     
+       14         	    0    	   1   	   0    	    4   	     5     
+       15         	    0    	   1   	   1    	    0   	     2     
+       16         	    0    	   1   	   1    	    1   	     3     
+       17         	    0    	   1   	   1    	    2   	     4     
+       18         	    0    	   1   	   1    	    3   	     5     
+       19         	    0    	   1   	   1    	    4   	     6     
+       20         	    0    	   2   	   0    	    0   	     2     
+       21         	    0    	   2   	   0    	    1   	     3     
+       22         	    0    	   2   	   0    	    2   	     4     
+       23         	    0    	   2   	   0    	    3   	     5     
+       24         	    0    	   2   	   0    	    4   	     6     
+       25         	    1    	   0   	   0    	    0   	     1     
+       26         	    1    	   0   	   0    	    1   	     2     
+       27         	    1    	   0   	   0    	    2   	     3     
+       28         	    1    	   0   	   0    	    3   	     4     
+       29         	    1    	   0   	   0    	    4   	     5     
+       30         	    1    	   0   	   1    	    0   	     2     
+       31         	    1    	   0   	   1    	    1   	     3     
+       32         	    1    	   0   	   1    	    2   	     4     
+       33         	    1    	   0   	   1    	    3   	     5     
+       34         	    1    	   0   	   1    	    4   	     6     
+       35         	    1    	   1   	   0    	    0   	     2     
+       36         	    1    	   1   	   0    	    1   	     3     
+       37         	    1    	   1   	   0    	    2   	     4     
+       38         	    1    	   1   	   0    	    3   	     5     
+       39         	    1    	   1   	   0    	    4   	     6     
+       40         	    1    	   1   	   1    	    0   	     3     
+       41         	    1    	   1   	   1    	    1   	     4     
+       42         	    1    	   1   	   1    	    2   	     5     
+       43         	    1    	   1   	   1    	    3   	     6     
+       44         	    1    	   1   	   1    	    4   	     7     
+       45         	    1    	   2   	   0    	    0   	     3     
+       46         	    1    	   2   	   0    	    1   	     4     
+       47         	    1    	   2   	   0    	    2   	     5     
+       48         	    1    	   2   	   0    	    3   	     6     
+       49         	    1    	   2   	   0    	    4   	     7     
+       50         	    2    	   0   	   0    	    0   	     2     
+       51         	    2    	   0   	   0    	    1   	     3     
+       52         	    2    	   0   	   0    	    2   	     4     
+       53         	    2    	   0   	   0    	    3   	     5     
+       54         	    2    	   0   	   0    	    4   	     6     
+       55         	    2    	   0   	   1    	    0   	     3     
+       56         	    2    	   0   	   1    	    1   	     4     
+       57         	    2    	   0   	   1    	    2   	     5     
+       58         	    2    	   0   	   1    	    3   	     6     
+       59         	    2    	   0   	   1    	    4   	     7     
+       60         	    2    	   1   	   0    	    0   	     3     
+       61         	    2    	   1   	   0    	    1   	     4     
+       62         	    2    	   1   	   0    	    2   	     5     
+       63         	    2    	   1   	   0    	    3   	     6     
+       64         	    2    	   1   	   0    	    4   	     7     
+       65         	    2    	   1   	   1    	    0   	     4     
+       66         	    2    	   1   	   1    	    1   	     5     
+       67         	    2    	   1   	   1    	    2   	     6     
+       68         	    2    	   1   	   1    	    3   	     7     
+       69         	    2    	   1   	   1    	    4   	     8     
+       70         	    2    	   2   	   0    	    0   	     4     
+       71         	    2    	   2   	   0    	    1   	     5     
+       72         	    2    	   2   	   0    	    2   	     6     
+       73         	    2    	   2   	   0    	    3   	     7     
+       74         	    2    	   2   	   0    	    4   	     8     
+       75         	    3    	   0   	   0    	    0   	     3     
+       76         	    3    	   0   	   0    	    1   	     4     
+       77         	    3    	   0   	   0    	    2   	     5     
+       78         	    3    	   0   	   0    	    3   	     6     
+       79         	    3    	   0   	   0    	    4   	     7     
+       80         	    3    	   0   	   1    	    0   	     4     
+       81         	    3    	   0   	   1    	    1   	     5     
+       82         	    3    	   0   	   1    	    2   	     6     
+       83         	    3    	   0   	   1    	    3   	     7     
+       84         	    3    	   0   	   1    	    4   	     8     
+       85         	    3    	   1   	   0    	    0   	     4     
+       86         	    3    	   1   	   0    	    1   	     5     
+       87         	    3    	   1   	   0    	    2   	     6     
+       88         	    3    	   1   	   0    	    3   	     7     
+       89         	    3    	   1   	   0    	    4   	     8     
+       90         	    3    	   1   	   1    	    0   	     5     
+       91         	    3    	   1   	   1    	    1   	     6     
+       92         	    3    	   1   	   1    	    2   	     7     
+       93         	    3    	   1   	   1    	    3   	     8     
+       94         	    3    	   1   	   1    	    4   	     9     
+       95         	    3    	   2   	   0    	    0   	     5     
+       96         	    3    	   2   	   0    	    1   	     6     
+       97         	    3    	   2   	   0    	    2   	     7     
+       98         	    3    	   2   	   0    	    3   	     8     
+       99         	    3    	   2   	   0    	    4   	     9     
+ 
+Coin Total 	 Number of Occurrences
+     1      	        4
+     2      	        9
+     3      	        14
+     4      	        18
+     5      	        19
+     6      	        16
+     7      	        11
+     8      	        6
+     9      	        2
+    Sum      	        99
+
+All these values have been written to the Coins sheet in Ch04_Data_Sp10.xlsx
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Program_04_1
+% Author: Afeique Sheikh
+
+% Program Description:
+% The purpose of this program is to demonstrate how to read from and write to a
+% text (.txt) file
+
+% Clear the command window and all variables
+clc % clear command window
+clear % clear all variables from workspace
+format compact % remove extra blank lines after output
+
+fprintf('Output for Program_04_1 written by Afeique Sheikh.\n\n')
+
+% Before running, make sure that Ch04_Data_Sp10.xlsx is closed and stored in 
+% the current working directory, otherwise Matlab will be unable to read it
+file = 'Ch04_Data_Sp10.xlsx';
+sheet = 'Coins';
+fprintf('Original data read from %s sheet in %s\n\n', sheet, file)
+
+% load coin data from Coins spreadsheet
+CoinMatrix = xlsread(file, 'Coins', 'B3:G102');
+
+% matrix indices
+CHANGE = 1;
+QUARTERS = 2;
+DIMES = 3;
+NICKELS = 4;
+PENNIES = 5;
+TOTAL = 6;
+
+% print table header
+fprintf('Change Due (cents) \t Quarters \t Dimes \t Nickels \t Pennies \t Total Coins\n')
+
+nRows = size(CoinMatrix, 1);
+nCols = size(CoinMatrix, 2);
+CoinTotals = zeros(1,9);
+% use integer division fix() function to calculate change due
+for row=1:nRows
+    % variable for storing remainder of change due
+    changeDue = CoinMatrix(row, CHANGE);
+    
+    % integer divide change due by 25 cents
+    % store integer result as this row's num quarters in matrix
+    CoinMatrix(row, QUARTERS) = fix(changeDue/25);
+    % subtract amount from change remainder
+    changeDue = changeDue - 25*CoinMatrix(row, QUARTERS);
+    
+    % integer divide change due by 10 cents
+    % store integer result as this row's num dimes in matrix
+    CoinMatrix(row, DIMES) = fix(changeDue/10);
+    % subtract amount from change remainder
+    changeDue = changeDue - 10*CoinMatrix(row, DIMES);
+    
+    % integer divide change due by 5 cents
+    % store integer result as this row's num nickels in matrix
+    CoinMatrix(row, NICKELS) = fix(changeDue/5);
+    % subtract amount from change remainder
+    changeDue = changeDue - 5*CoinMatrix(row, NICKELS);
+    
+    % change remainder is in pennies, store in matrix row's num pennies
+    CoinMatrix(row, PENNIES) = changeDue;
+    
+    % sum this row's coin counts to get total number of coins
+    CoinMatrix(row, TOTAL) = sum(CoinMatrix(row, QUARTERS:PENNIES));
+    
+    % keep track of each time a particular total occurs using vector
+    CoinTotals( CoinMatrix(row, TOTAL) ) = CoinTotals( CoinMatrix(row, TOTAL) ) + 1;
+    
+    % print out this row's counts
+    fprintf('       %2d         \t    %d    \t   %d   \t   %d    \t    %d   \t     %d     \n',...
+        CoinMatrix(row, CHANGE), CoinMatrix(row, QUARTERS),...
+        CoinMatrix(row, DIMES), CoinMatrix(row, NICKELS),...
+        CoinMatrix(row, PENNIES), CoinMatrix(row, TOTAL))
+end
+
+% write the matrix to the spreadsheet
+xlswrite(file, CoinMatrix(:, QUARTERS:TOTAL), sheet, 'C4:G102')
+
+% print coin totals, and number of times each total occurs
+disp(' ')
+fprintf('Coin Total \t Number of Occurrences\n')
+nRows = length(CoinTotals);
+for i=1:nRows
+    fprintf('     %d      \t        %d\n', i, CoinTotals(i))
+end
+% sum the CoinTotals vector and store as last item in vector
+CoinTotals(10) = sum(CoinTotals);
+fprintf('    Sum      \t        %d\n', CoinTotals(10))
+
+% write CoinTotals vector to spreadsheet
+xlswrite(file, CoinTotals', sheet, 'J4:J13')
+
+fprintf('\nAll these values have been written to the %s sheet in %s\n\n', sheet, file)
+
+##### SOURCE END #####
+--></body></html>

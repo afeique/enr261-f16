@@ -1,0 +1,62 @@
+Problem_02_9a
+Output for Program_02_9a written by Afeique Sheikh.
+
+ 
+Input magnitude: 124
+Specify the input units (cm, in, or ft): cxkjbhsdujgsn
+Invalid input units "cxkjbhsdujgsn", please try again.
+Specify the input units (cm, in, or ft): sljkdgheiu
+Invalid input units "sljkdgheiu", please try again.
+Specify the input units (cm, in, or ft): skdjfisk
+Invalid input units "skdjfisk", please try again.
+Specify the input units (cm, in, or ft): ft
+Specify the output units (cm, in, or ft): cm
+ 
+124 ft = 3779.52 cm
+
+Problem_02_9a
+Output for Program_02_9a written by Afeique Sheikh.
+
+ 
+Input magnitude: 25.4
+Specify the input units (cm, in, or ft): cm
+Specify the output units (cm, in, or ft): cm
+ 
+25.4 cm = 25.4 cm
+
+Problem_02_9a
+Output for Program_02_9a written by Afeique Sheikh.
+
+ 
+Input magnitude: 25.4
+Specify the input units (cm, in, or ft): cm
+Specify the output units (cm, in, or ft): in
+ 
+25.4 cm = 10 in
+
+Problem_02_9a
+Output for Program_02_9a written by Afeique Sheikh.
+
+ 
+Input magnitude: 25.4
+Specify the input units (cm, in, or ft): cm
+Specify the output units (cm, in, or ft): ft
+ 
+25.4 cm = 0.833333 ft
+
+Problem_02_9a
+Output for Program_02_9a written by Afeique Sheikh.
+
+ 
+Input magnitude: 1242344
+Specify the input units (cm, in, or ft): ft
+Specify the output units (cm, in, or ft): in
+ 
+1.24234e+06 ft = 1.49081e+07 in
+
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('input')" style="font-weight:bold">input</a>
+Cannot call INPUT from EVALC.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Problem_02_9a', 'S:\Fall 2016\ENR261181\Program_02\Problem_02_9a.m', 16)" style="font-weight:bold">Problem_02_9a</a> (<a href="matlab: opentoline('S:\Fall 2016\ENR261181\Program_02\Problem_02_9a.m',16,0)">line 16</a>)
+mag_in = input('Input magnitude: ');
+

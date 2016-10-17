@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Tutorial_01_3</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-14"><meta name="DC.source" content="Tutorial_01_3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Filename: Tutorial_01_3</span>
+<span class="comment">% Author:   Afeique Sheikh</span>
+
+<span class="comment">% Program Description:</span>
+<span class="comment">% The purpose of this program is to demonstrate the power of Matlab in</span>
+<span class="comment">% performing vector and matrix operations.</span>
+
+<span class="comment">% Clear the command window and all variables</span>
+clc <span class="comment">% clear contents of the command window</span>
+clear <span class="comment">% clears all defined variables from the Matlab workspace</span>
+format <span class="string">compact</span>  <span class="comment">% removes blank lines after variable output</span>
+                <span class="comment">% to revert back to the default, simply remove</span>
+                <span class="comment">% the word 'compact' and rerun</span>
+
+<span class="comment">% Output the title and author to the command window.</span>
+fprintf(<span class="string">'Output for Tutorial_01_3 written by Afeique Sheikh.\n\n'</span>)
+
+RowVector = [1 2 3 4 5] <span class="comment">% row vector variable</span>
+
+<span class="comment">% The old way of finding the average of a row vector using a for loop</span>
+SumRow = 0; <span class="comment">% initializes the row sum to 0, semicolon suppresses output</span>
+ncol = length(RowVector) <span class="comment">% length() returns the number of elements</span>
+
+<span class="comment">% It is much better to compute the number of elements instead of simply</span>
+<span class="comment">% counting the number of elements manually and using the constant 5</span>
+<span class="comment">% instead of ncol. By using ncol, the program will still work correctly</span>
+<span class="comment">% even if the size of RowVector changes.</span>
+
+<span class="keyword">for</span> col=1:1:ncol <span class="comment">% repeats the loop starting with col=1, increments col</span>
+                 <span class="comment">% by 1, ends with col=ncol</span>
+    SumRow = SumRow + RowVector(col); <span class="comment">% adds vector element to sum</span>
+<span class="keyword">end</span>
+
+OldRowAverage = SumRow/ncol <span class="comment">% compute the average</span>
+
+<span class="comment">% The two modern ways of finding the average using built-in functions</span>
+ModernRowAverage1 = sum(RowVector)/ncol
+ModernRowAverage2 = mean(RowVector)
+
+fprintf(<span class="string">'\n'</span>) <span class="comment">% blank line</span>
+MatrixA = [1 2 3 4; 5 6 7 8; 9 10 11 12] <span class="comment">% matrix variable</span>
+
+<span class="comment">% The old way of squaring each element of a matrix</span>
+<span class="comment">% The size() function returns the number of rows and cols in MatrixA</span>
+<span class="comment">% as a vector</span>
+MatrixSize = size(MatrixA); <span class="comment">% semicolon suppresses output</span>
+nrows = MatrixSize(1)
+ncols = MatrixSize(2)
+
+<span class="keyword">for</span> col=1:1:ncols <span class="comment">% loop through each column in MatrixA</span>
+    <span class="keyword">for</span> row=1:1:nrows <span class="comment">% loop through each row</span>
+        MatrixOld(row,col) = MatrixA(row,col)^2; <span class="comment">% square element</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% output the squared matrix</span>
+MatrixOld
+
+<span class="comment">% The modern way of squaring each element in a matrix.</span>
+<span class="comment">% The . operator is used to denot that the operation applies to each</span>
+<span class="comment">% matrix element individually instead of multiplying the matrix by</span>
+<span class="comment">% itself (MatrixA * MatrixA)</span>
+<span class="comment">% The . operator is referred to as the element-by-element operator.</span>
+MatrixModern = MatrixA .^ 2
+</pre><pre class="codeoutput">Output for Tutorial_01_3 written by Afeique Sheikh.
+
+RowVector =
+     1     2     3     4     5
+ncol =
+     5
+OldRowAverage =
+     3
+ModernRowAverage1 =
+     3
+ModernRowAverage2 =
+     3
+
+MatrixA =
+     1     2     3     4
+     5     6     7     8
+     9    10    11    12
+nrows =
+     3
+ncols =
+     4
+MatrixOld =
+     1     4     9    16
+    25    36    49    64
+    81   100   121   144
+MatrixModern =
+     1     4     9    16
+    25    36    49    64
+    81   100   121   144
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Filename: Tutorial_01_3
+% Author:   Afeique Sheikh
+
+% Program Description:
+% The purpose of this program is to demonstrate the power of Matlab in
+% performing vector and matrix operations.
+
+% Clear the command window and all variables
+clc % clear contents of the command window
+clear % clears all defined variables from the Matlab workspace
+format compact  % removes blank lines after variable output
+                % to revert back to the default, simply remove
+                % the word 'compact' and rerun
+
+% Output the title and author to the command window.
+fprintf('Output for Tutorial_01_3 written by Afeique Sheikh.\n\n')
+
+RowVector = [1 2 3 4 5] % row vector variable
+
+% The old way of finding the average of a row vector using a for loop
+SumRow = 0; % initializes the row sum to 0, semicolon suppresses output
+ncol = length(RowVector) % length() returns the number of elements
+
+% It is much better to compute the number of elements instead of simply
+% counting the number of elements manually and using the constant 5
+% instead of ncol. By using ncol, the program will still work correctly
+% even if the size of RowVector changes.
+
+for col=1:1:ncol % repeats the loop starting with col=1, increments col
+                 % by 1, ends with col=ncol
+    SumRow = SumRow + RowVector(col); % adds vector element to sum
+end
+
+OldRowAverage = SumRow/ncol % compute the average
+
+% The two modern ways of finding the average using built-in functions
+ModernRowAverage1 = sum(RowVector)/ncol
+ModernRowAverage2 = mean(RowVector)
+
+fprintf('\n') % blank line
+MatrixA = [1 2 3 4; 5 6 7 8; 9 10 11 12] % matrix variable
+
+% The old way of squaring each element of a matrix
+% The size() function returns the number of rows and cols in MatrixA
+% as a vector
+MatrixSize = size(MatrixA); % semicolon suppresses output
+nrows = MatrixSize(1)
+ncols = MatrixSize(2)
+
+for col=1:1:ncols % loop through each column in MatrixA
+    for row=1:1:nrows % loop through each row
+        MatrixOld(row,col) = MatrixA(row,col)^2; % square element
+    end
+end
+
+% output the squared matrix
+MatrixOld
+
+% The modern way of squaring each element in a matrix.
+% The . operator is used to denot that the operation applies to each
+% matrix element individually instead of multiplying the matrix by 
+% itself (MatrixA * MatrixA)
+% The . operator is referred to as the element-by-element operator.
+MatrixModern = MatrixA .^ 2
+
+
+##### SOURCE END #####
+--></body></html>
